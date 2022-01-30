@@ -11,13 +11,19 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "gulp-cli": "^2.3.0",
     "history": "^5.0.1",
+    "idb": "^7.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-if": "^4.1.1",
     "react-router-dom": "^6.0.0-beta.7",
     "react-scripts": "4.0.3",
+    "react-toastify": "^8.1.0",
+    "react-workbox": "^1.0.0-beta-5",
+    "toastr": "^2.1.4",
     "use-force-update": "^1.0.7",
+    "validator": "^13.7.0",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
@@ -43,5 +49,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.8",
+    "gulp-babel": "^8.0.0"
   }
 }
