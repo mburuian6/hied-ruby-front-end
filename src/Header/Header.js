@@ -1,19 +1,66 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
+import { isLoggedIn, isPersistedState } from '../helpers';
 
 const Header = () => {
-    return(
-        <Link to='/'>
-            <header>
-            <Typography 
-            variant='h3' color="black">
-                Hi'ed
-            </Typography>
-            </header>
-        </Link>
+
+    const HasLoggedIn = () => {
+        return <>
+            <Grid container spacing={2} justifyContent="flex-end">
+                <Grid item >
+                    Logged in: 
+                    <Link to="" variant="body2">
+                    { isPersistedState('email')} 
+                    </Link>
+                </Grid>
+            </Grid>
+        </>
+    }
+
+    const HasNotLoggedIn = () => {
+        return <Grid container spacing={2} justifyContent="flex-end">
+            <Grid item >
+                <Link to="/signup" variant="body2">
+                    Sign Up
+                </Link>
+            </Grid>{'  '}
+            <Grid item>
+                <Link to="/login" variant="body2">
+                    Login
+                </Link>
+            </Grid>
+        </Grid>
+    }
+
+    const AppHeader = () => {
+        if (isLoggedIn()) {
+            return <HasLoggedIn />
+        }
+        return <HasNotLoggedIn />
+    }
+
+    return (
+        <>
+            <Grid container>
+                <Grid item>
+                    <Link to='/'>
+                        <header>
+                            <Typography
+                                variant='h3'
+                                color="black">
+                                Hi'ed
+                            </Typography>
+                        </header>
+                    </Link>
+                </Grid>
+            </Grid>
+            <AppHeader />
+
+
+        </>
     );
-  
+
 }
 
 export default Header;
