@@ -15,7 +15,7 @@ const BidItem = ({ bid, acceptBid }) =>{
       </Typography>
       <Typography variant='caption'> {bid.picked? 'Accepted':''} </Typography>
       <Typography variant='caption'>
-        {bid.comment? '  User says: '+bid.comment: ''}
+        {bid.notes? '  User says: '+bid.notes: ''}
       </Typography>
       
       
