@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import BidItem from '../BidItem/BidItem';
 import { API_POST_BIDS_PATH } from "../config";
 import BidForm from '../BidForm/BidForm';
-import { Navigate } from 'react-router-dom';
 
 import { defaultInstance as axios} from '../axiosConfig';
 import toast from '../FlashNotification/FlashNotification';

@@ -1,11 +1,11 @@
-import { Avatar, Button, Container, CssBaseline, FormControlLabel, Grid, TextField, Typography } from '@mui/material';
+import { Avatar, Button, Container, CssBaseline, Grid, TextField, Typography } from '@mui/material';
 import { createTheme,ThemeProvider } from '@mui/material/styles';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import React from 'react';
 import { Box } from '@mui/system';
 import { Link } from 'react-router-dom';
 import { API_SIGN_UP_URL,headers } from '../config';
-import  { Navigate,useNavigate } from 'react-router-dom';
+import  { useNavigate } from 'react-router-dom';
 import validator from 'validator';
 import toast from '../FlashNotification/FlashNotification';
 

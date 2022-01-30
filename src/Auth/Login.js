@@ -5,10 +5,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Box } from '@mui/system';
 import { Link } from 'react-router-dom';
 import { API_LOGIN_URL,headers } from '../config';
-import  { Navigate,useNavigate } from 'react-router-dom';
+import  { useNavigate } from 'react-router-dom';
 import validator from 'validator';
 import toast from '../FlashNotification/FlashNotification';
-import { RepeatOneSharp } from '@mui/icons-material';
 
 function Copyright(props) {
     return (
