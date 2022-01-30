@@ -1,7 +1,12 @@
-import react, { Component } from 'react';
-import { Grid, TextareaAutosize, TextField } from '@mui/material';
+import React, { useState } from 'react';
+import { Grid, TextField } from '@mui/material';
 import { Button } from '@mui/material';
 import { makeStyles } from "@mui/styles";
+import { useNavigate } from 'react-router-dom';
+import { API_JOBS_URL, API_JOBS_PATH } from '../config';
+import { isPersistedState } from '../helpers';
+import { defaultInstance as axios}  from '../axiosConfig';
+import { toast } from '../FlashNotification/FlashNotification';
 
 const useStyles = makeStyles({
     root: {
@@ -12,117 +17,137 @@ const useStyles = makeStyles({
     }
 });
 
-class JobForm extends Component {
 
-    constructor(props) {
-        super(props)
+const JobForm = () => {
 
-        this.state = {
-            api_url: props.api_url,
-            title: "",
-            pay: "",
-            start: "",
-            open: true,
-            description: ""
-        }
+    const api_url = API_JOBS_URL;
+    const navigate = useNavigate();
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleTitleChange = this.handleTitleChange.bind(this);
-        this.handlePayChange = this.handlePayChange.bind(this);
-        this.handleStartChange = this.handleStartChange.bind(this);
-        this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    const [title,setTitle] = useState('');
+    const [pay,setPay] = useState(0);
+    const [start,setStart] = useState(Date.now);
+    const [closed,setClosed] = useState(false);
+    const [description,setDescription] = useState('');
 
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      formSubmit(event.target);
     }
 
-    handleSubmit(event) {
-        event.preventDefault();
-        this.formSubmit(event.target);
-        this.setState({
-            title: '',
-            pay: '',
-            start: '',
-            description: ''
-        })
+    // const formSubmit = async (formData) => {
+    //   var data = new FormData(formData);
+    //   var obj = Object.fromEntries(data.entries())
+    //   obj['owner'] = isPersistedState('email').replaceAll('"','')
+    //   console.log(obj);
+
+    //   console.log(`Bearer ${isPersistedState('authenticationToken')}`);
+    //   await fetch(API_JOBS_URL, {
+    //     method: "POST",
+    //     headers: headers,
+    //     mode: "cors",
+    //     body: JSON.stringify()
+    //   })
+    //   .then(response => {
+    //       if(response.ok){
+    //         setTitle('');
+    //         setPay('');
+    //         setStart('');
+    //         setDescription('');
+
+    //         navigate('/')
+    //       } else{
+    //           console.log(response.text);
+    //       }
+    //   })
+      
+    // }
+
+    const formSubmit = async (formData) => {
+      var data = new FormData(formData);
+      var rawStart = data.get('start');
+      console.log(rawStart);
+
+      var owner = isPersistedState('email')?
+        isPersistedState('email').replaceAll('"',''): 'owner';
+      data.append('owner', owner);
+      // data.set('start', Date.parse(rawStart))
+
+      console.log(JSON.stringify(Object.fromEntries(data.entries())));
+
+      await axios.post(API_JOBS_PATH, Object.fromEntries(data.entries())
+      )
+      .then(()=>{
+        setTitle('');
+        setPay('');
+        setStart('');
+        setDescription('');
+
+        navigate('/')
+      })
+      .catch((error) => {
+        console.log(error.toJSON());
+      })
+      
+    }
+    
+    const handleTitleChange = (event) => {
+      setTitle(event.target.value)
     }
 
-    async formSubmit(formData) {
-        var data = new FormData(formData);
-        await fetch(this.state.api_url, {
-            method: "POST",
-            mode: "cors",
-            body: data
-        }).then(response => response.json())
-            .then(response => this.props.updateJobList(response))
-
+    const handlePayChange = (event) => {
+      setPay(event.target.value)
     }
 
-    //changes to textfields
-    handleTitleChange(event) {
-        this.setState({
-            title: event.target.value
-        })
+    const handleStartChange = (event) => {
+      setStart(event.target.value)
     }
 
-    handlePayChange(event) {
-        this.setState({
-            pay: event.target.value
-        })
+    const handleDescriptionChange = (event) => {
+      setDescription(event.target.value)
     }
 
-    handleStartChange(event) {
-        this.setState({
-            start: event.target.value
-        })
-    }
 
-    handleDescriptionChange(event) {
-        this.setState({
-            description: event.target.value
-        })
-    }
+    return (
+      <Grid>
+        <Grid item xs></Grid>
+          <Grid item xs={10}>
+            <form onSubmit={handleSubmit}
+                  id="job_entry_form"
+                  autoComplete="off">
 
-    //render
-    render() {
-        return (
-            <Grid>
-                <Grid item xs></Grid>
+                <TextField id="title" label="Title" 
+                variant="filled" type="text" 
+                value={title} name="title" 
+                onChange={handleTitleChange} required/> <br />
 
-                <Grid item xs={10}>
-                    <form
-                        onSubmit={this.handleSubmit}
-                        id="job_entry_form"
-                        autoComplete="off">
+                <TextField id="pay" label="Pay" 
+                variant="filled"  type="number" 
+                value={pay}  name="pay" 
+                onChange={handlePayChange} required/> <br />
 
-                        <TextField id="title" label="Title"
-                            variant="outlined" type="text" value={this.state.title}
-                            name="job[title]" onChange={this.handleTitleChange}
-                        /> <br />
+                <TextField id="start" label="Start" 
+                variant="filled" type="datetime-local" 
+                value={start} name="start" 
+                onChange={handleStartChange} required/><br />
 
-                        <TextField id="pay" label="Pay" variant="outlined"
-                            type="number" value={this.state.pay}
-                            name="job[pay]" onChange={this.handlePayChange} /> <br />
+                <TextField id="description" label="Description" 
+                variant="filled" type="text" placeholder='...'
+                multiline 
+                style={{backgroundColor:" white",color:" white"}}
+                value={description} name="description" 
+                onChange={handleDescriptionChange} /><br />
 
-                        <TextField id="start" label="Start" variant="outlined"
-                            type="datetime-local" value={this.state.start}
-                            name="job[start]" onChange={this.handleStartChange} /><br />
-
-                        <TextareaAutosize id="description" label="Description" variant="outlined"
-                            type="text" value={this.state.description}
-                            name="job[description]" onChange={this.handleDescriptionChange} /><br />
-
-                        <Button variant="contained"
-                            color="primary" type="submit">
-                            Post Job
-                        </Button>
-                    </form>
-                </Grid>
-
-                <Grid item xs></Grid>
+                <Button variant="contained" color="primary" 
+                type="submit"> Post Job </Button>
+                </form>
             </Grid>
-        )
-    }
 
+            <Grid item xs></Grid>
+        </Grid>
+    )
 }
+
+
 
 export default JobForm;
 
