@@ -4,8 +4,9 @@ export const isPersistedState = stateName =>{
 }
 
 export const timeFormat = startTime => {
-    return new Date(startTime).toLocaleDateString()
+  return new Date(startTime).toLocaleDateString()
 }
+
 const isIndexDbSupported = () => {
   if (!('indexedDB' in window)) {
     console.log('This browser doesn\'t support IndexedDB');
