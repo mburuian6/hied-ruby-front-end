@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import BidItem from '../BidItem/BidItem';
-import { useBidsFetch } from '../hooks/useBidsFetch';
 import { API_POST_BIDS_PATH } from "../config";
 import BidForm from '../BidForm/BidForm';
-import API from '../API';
-import useForceUpdate from 'use-force-update';
 import { Navigate } from 'react-router-dom';
 
 import { defaultInstance as axios} from '../axiosConfig';
@@ -14,8 +11,7 @@ const BidList = ({ job }) => {
  
   
   const acceptBid = async (bid) => {
-  
-
+    console.log(bid);
   }
 
 
