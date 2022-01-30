@@ -64,13 +64,13 @@ const JobForm = () => {
 
     const formSubmit = async (formData) => {
       var data = new FormData(formData);
-      var rawStart = data.get('start');
-      console.log(rawStart);
 
       var owner = isPersistedState('email')?
         isPersistedState('email').replaceAll('"',''): 'owner';
       data.append('owner', owner);
-      // data.set('start', Date.parse(rawStart))
+
+      var start = new Date(data.get('start'));
+      data.set('start',start.toUTCString());
 
       console.log(JSON.stringify(Object.fromEntries(data.entries())));
 
