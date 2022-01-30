@@ -31,21 +31,18 @@ const ExpandMore = styled((props) => {
 
 export default function JobItem( props ) {
   const [expanded, setExpanded] = React.useState(false);
+  const thisJob = props.job;
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
-  function handleDelete (){
-    props.deleteItem(props.job);
-  }
 
   return (
     <Card sx={{ maxWidth: 345, margin: 5 }}>
       <CardHeader
         avatar={
           <Avatar aria-label="recipe">
-            U
+            {props.job.owner.charAt(0).toUpperCase()}
           </Avatar>
         }
         action={
@@ -54,12 +51,15 @@ export default function JobItem( props ) {
           </IconButton>
         }
         title= {
-          <Link to={`/${props.jobId}`}> 
+          <Link 
+            to = { '/jobview' }
+            state = {{ job: props.job }}
+          > 
             {props.job.title}
           </Link>          
         }
         subheader={new Date(props.job.start).toLocaleDateString()}
-      />
+      /> 
       {/* <CardMedia component="img" height="194" image=""/> */}
       <CardContent>
         <Typography variant="body2" color="text.secondary">
@@ -86,7 +86,7 @@ export default function JobItem( props ) {
         <CardContent>
           <Typography paragraph>
             { //Check if message failed
-                (props.job.open)? <>Open</> : <>Closed</>
+              props.job.closed == false? <>Open</> : <>Closed</>
             }
           </Typography>
           <Typography paragraph>
@@ -96,10 +96,6 @@ export default function JobItem( props ) {
             <i>
                 by:user
             </i>
-            <IconButton aria-label="delete" size="small" onClick={handleDelete}>
-              <DeleteIcon               
-              fontSize="inherit"/>
-            </IconButton>
           </Typography>
         </CardContent>
       </Collapse>
