@@ -1,43 +1,57 @@
-import { Button, TextareaAutosize, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { Snackbar } from '@mui/material';
+import { API_BIDS_PATH } from "../config";
+import { Button, TextField } from "@mui/material";
+import { defaultInstance as axios } from "../axiosConfig";
+import { isPersistedState } from "../helpers";
+import toast from '../FlashNotification/FlashNotification';
 
-const BidForm = ({ url,addBid }) => {
+
+const BidForm = ({ addBid, postId }) => {
     const [pay, setPay] = useState(0);
-    const [comment, setComment] = useState("");
-
+    const [notes, setNotes] = useState("");
+    // const [myBid, setMyBid] = useState();
+    
     const handleSubmit = (e) => {
-        //add to persistent storage
-        e.preventDefault();
-        formSubmit(e.target);
-        setPay(0);
-        setComment('');
-
-        handleSnackBar();    
+      e.preventDefault();
+      formSubmit(e.target);
+        
     }
 
-    async function formSubmit(formData) {
+    const formSubmit = async (formData) => {
       var data = new FormData(formData);
-      await fetch(url, {
-        method: "POST",
-        mode: "cors",
-        body: data
+      var owner = isPersistedState('email')?
+        isPersistedState('email').replaceAll('"',''): 'owner';
+
+      data.append('owner', owner);
+      data.append('post_id', postId);
+      console.log(JSON.stringify(Object.fromEntries(data.entries())));
+
+      await axios.post(API_BIDS_PATH, Object.fromEntries(data.entries())
+      )
+      .then((response)=>{
+        setPay(0);
+        setNotes('');
+        // setMyBid(response.data[0])
+        handleSnackBar(); 
+
+        addBid(response.data)
       })
-      .then(response => {
-        response.json();
+      .catch((error) => {
+        console.log(error.toJSON());
+        if (error.toJSON().status == 409) {
+          toast.warning("You have already bidded for this job");
+        }
       })
-      .then(response => {
-        addBid(response)
-      });
+      
     }
 
     const handleSnackBar = () => {
       return(
         <Snackbar
-          
           autoHideDuration={5000}
           onClose={handleClose}
-          message="New Bids; Reload Page to View"
+          message="New Bid Added;"
         />
       )
     }
@@ -46,20 +60,20 @@ const BidForm = ({ url,addBid }) => {
   
     }
 
-    
-
     return(
         <form onSubmit={e => {handleSubmit(e)}}>
           
-          <TextField id="pay" label="Proposed Pay"
+          <TextField id="pay" label="Proposed Pay" min="0"
             variant="outlined" type="number" value={pay}
-            name="pay" onChange={e => setPay(e.target.value)}
+            name="pay" onChange={e => {
+              setPay(e.target.value)
+            }} required
           /> <br />
 
-          <TextareaAutosize id="comment" label="Any Comment?"
-           variant="outlined" type="text" value={comment} 
-           placeholder="Any additional info..." name="comment" 
-           onChange={e => setComment(e.target.value)} maxLength='288'/><br />
+          <TextField id="notes" label="Any Notes?" multiline
+           variant="outlined" type="text" value={notes} 
+           placeholder="Any additional info..." name="notes" 
+           onChange={e => setNotes(e.target.value)} maxLength='255'/><br />
 
           <Button variant="contained"
             color="primary" type="submit">
