@@ -1,6 +1,11 @@
 export const isPersistedState = stateName =>{
-    const sessionState = sessionStorage.getItem(stateName);
-    return sessionState && JSON.parse(sessionState);
+  return sessionStorage.getItem(stateName);
+}
+
+export const isLoggedIn = () =>{
+  var sessionState = sessionStorage.getItem('authenticationToken');
+  if (sessionState && JSON.parse(sessionState)) return true;
+  return false;
 }
 
 export const timeFormat = startTime => {
