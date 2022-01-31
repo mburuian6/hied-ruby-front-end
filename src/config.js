@@ -24,5 +24,7 @@ export {
     headers,
     API_JOBS_PATH,
     API_BIDS_PATH,
-    API_POST_BIDS_PATH
+    API_POST_BIDS_PATH,
+    API_ACCEPT_BID_PATH,
+    API_ALL_NOTIFICATIONS
 }
