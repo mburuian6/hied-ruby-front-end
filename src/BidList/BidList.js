@@ -1,22 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import BidItem from '../BidItem/BidItem';
-import { API_POST_BIDS_PATH } from "../config";
+import { API_POST_BIDS_PATH, API_ACCEPT_BID_PATH } from "../config";
 import BidForm from '../BidForm/BidForm';
 
 import { defaultInstance as axios} from '../axiosConfig';
 import toast from '../FlashNotification/FlashNotification';
+import { useNavigate } from 'react-router-dom';
 
 const BidList = ({ job }) => {
  
-  
-  const acceptBid = async (bid) => {
-    console.log(bid);
-  }
-
-
   const[bids, setBids] = useState([]);
   const postId = job._links.self.href.split('/').at(-1);
   const [added, setAdded] = useState(false);
+  const navigate = useNavigate();
+
+  const acceptBid = async (bid) => {
+    console.log(bid); //post_id, bid_id
+    const bidId = bid._links.self.href.split('/').at(-1);
+
+    await axios.put(API_ACCEPT_BID_PATH, 
+      {
+        post_id: postId,
+        bid_id: bidId
+      }
+    )
+    .then((response)=>{
+      if (response.status == 200) {
+        navigate('/notice-board')
+      } else {
+        toast.error('Failed to accept bid. Try again or contact support')
+      }
+    })
+    .catch((error) => {
+      console.log(error.toJSON());
+    })
+  }
 
   useEffect (() => {
     getBids();
