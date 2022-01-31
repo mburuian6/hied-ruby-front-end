@@ -39,8 +39,8 @@ const BidForm = ({ addBid, postId }) => {
       })
       .catch((error) => {
         console.log(error.toJSON());
-        if (error.toJSON().status == 409) {
-          toast.warning("You have already bidded for this job");
+        if (error.toJSON().status == 500) {
+          toast.warning("Server Error.");
         }
       })
       
