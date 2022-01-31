@@ -9,6 +9,8 @@ const API_LOGIN_URL = 'http://localhost:8080/auth/login';
 const API_JOBS_PATH = '/posts';
 const API_POST_BIDS_PATH = '/bids/open_post_bids';
 const API_BIDS_PATH = '/bids';
+const API_ACCEPT_BID_PATH = '/bids/accept_bid';
+const API_ALL_NOTIFICATIONS= '/notifications/all_notifications';
 
 const headers = new Headers();
 headers.append('Content-Type','application/json');
