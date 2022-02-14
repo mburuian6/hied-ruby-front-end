@@ -26,7 +26,7 @@ const BidList = ({ job }) => {
     )
     .then((response)=>{
       if (response.status == 200) {
-        navigate('/notice-board')
+        navigate(`/notice-board/${job.owner}`)
       } else {
         toast.error('Failed to accept bid. Try again or contact support')
       }
