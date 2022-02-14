@@ -2,6 +2,15 @@ export const isPersistedState = stateName =>{
   return sessionStorage.getItem(stateName);
 }
 
+export const persistedState = stateName =>{
+  return sessionStorage.getItem(stateName);
+}
+
+export const persistState = (key, value) => {
+  sessionStorage.setItem(key, value);
+  return key;
+}
+
 export const isLoggedIn = () =>{
   var sessionState = sessionStorage.getItem('authenticationToken');
   if (sessionState && JSON.parse(sessionState)) return true;
