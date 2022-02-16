@@ -7,16 +7,18 @@ const defaultInstance = axios.create({ baseURL: BASE_URL })
 
 defaultInstance.defaults.headers.common['mode'] = 'cors'
 defaultInstance.defaults.withCredentials = true
-defaultInstance.defaults.headers.common['Authorization'] = 
-  `Bearer ${persistedState('token').access_token.replaceAll('"','')}`;
+if (persistedState('token')) {
+  defaultInstance.defaults.headers.common['Authorization'] = 
+    `Bearer ${persistedState('token').access_token.replaceAll('"','')}`;
+}
 
 defaultInstance.interceptors.request.use(request => {
-  console.log('Starting Request', JSON.stringify(request, null, 2))
+  console.log('Starting Request', JSON.stringify(request, null, 2));
   return request;
 })
 
 defaultInstance.interceptors.response.use(response => {
-  console.log('Response:', JSON.stringify(response, null, 2))
+  console.log('Response:', JSON.stringify(response, null, 2));
   return response
 })
 
@@ -51,6 +53,8 @@ authInstance.interceptors.response.use(response => {
   if(response.access_token != null ) persistState('token', response.data);
   return response;
 })
+
+
 
 
 export { 
