@@ -4,7 +4,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import React from 'react';
 import { Box } from '@mui/system';
 import { Link } from 'react-router-dom';
-import { API_SIGN_UP_URL,headers } from '../config';
+import { API_SIGN_UP_PATH } from '../config';
+import { authInstance as axios} from '../axiosConfig';
 import  { useNavigate } from 'react-router-dom';
 import validator from 'validator';
 import toast from '../FlashNotification/FlashNotification';
@@ -46,26 +47,19 @@ export default function SignUp() {
         
     };
 
-    const formSubmit = async (data) => {
-        await fetch(API_SIGN_UP_URL, {
-            method: "POST",
-            headers: headers,
-            mode: "cors",
-            body: JSON.stringify(Object.fromEntries(data.entries()))
+    const formSubmit = async (formData) => {
+        await axios.post(API_SIGN_UP_PATH, 
+            Object.fromEntries(formData.entries())
+        )
+        .then(()=>{
+          navigate('/')
+          toast.success('Register successful!');
         })
-        .then(response => {
-            if(response.ok){
-                //show success message
-                toast.success('Register successful! Please log in to proceed');
-                //reload to login
-                navigate('/login')
-            }
-            else{
-                //show error message
-                toast.error('Register error, '+new Error(response.body));
-            }
-        });
-
+        .catch((error) => {
+          console.log(error.toJSON());
+          toast.error('Register error, '+new Error(error.body));
+        })
+        
     }
 
 

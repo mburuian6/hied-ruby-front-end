@@ -4,8 +4,8 @@ import { createTheme,ThemeProvider } from '@mui/material/styles';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Box } from '@mui/system';
 import { Link } from 'react-router-dom';
-import { API_LOGIN_URL,headers } from '../config';
-import  { useNavigate } from 'react-router-dom';
+import { API_LOGIN_PATH } from '../config';
+import  { useNavigate, useLocation } from 'react-router-dom';
 import validator from 'validator';
 import toast from '../FlashNotification/FlashNotification';
 import { authInstance as axios} from '../axiosConfig';
@@ -47,33 +47,20 @@ export default function Login() {
     }
   };
 
-  const formSubmit = async (data) => {
-    await fetch(API_LOGIN_URL, {
-        method: "POST",
-        headers: headers,
-        mode: "cors",
-        body: JSON.stringify(Object.fromEntries(data.entries()))
+  const formSubmit = async (formData) => {
+    await axios.post(API_LOGIN_PATH, 
+        Object.fromEntries(formData.entries())
+    )
+    .then(()=>{
+      navigate(state?.path || "/");
+      toast.success('You are successfully logged in');
     })
-    .then(response => {
-        if(response.ok){
-            //show success message
-            toast.success('You are successfully logged in');
-            return response.json()
-        }
-        else{
-            //show error message
-            toast.error('Login error, '+new Error(response.status));
-        }
-    }).then(response => {
-      //store credentials in session
-      sessionStorage.setItem('email', JSON.stringify(response['email']));
-      sessionStorage.setItem('authenticationToken', JSON.stringify(response['authenticationToken']));
-
-      //reload to home
-      navigate('/')
-    });
-
-  };
+    .catch((error) => {
+      console.log(error.toJSON());
+      toast.error('Login error, '+new Error(error.body));
+    })
+    
+}
 
   return (
     <ThemeProvider theme={theme}>
