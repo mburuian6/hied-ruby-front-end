@@ -8,6 +8,7 @@ import { API_LOGIN_URL,headers } from '../config';
 import  { useNavigate } from 'react-router-dom';
 import validator from 'validator';
 import toast from '../FlashNotification/FlashNotification';
+import { authInstance as axios} from '../axiosConfig';
 
 function Copyright(props) {
     return (
@@ -27,6 +28,7 @@ const theme = createTheme();
 
 export default function Login() {
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   const handleSubmit = (event) => {
     event.preventDefault();
