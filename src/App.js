@@ -10,6 +10,7 @@ import NoticeBoard from './NoticeBoard/NoticeBoard';
 import SignUp from './Auth/SignUp';
 import Login from './Auth/Login';
 import JobForm from './JobForm/JobForm';
+import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 
 // const axios = require('axios').default;
 
@@ -22,7 +23,13 @@ const App = () => {
         <Route path='/notice-board/:owner' element={< NoticeBoard />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/jobform' element={<JobForm />} />
+        <Route 
+          path='/jobform' 
+          element={
+            <ProtectedRoute>
+              <JobForm />
+            </ProtectedRoute>
+          } />
         <Route path='/jobview' element={<JobView />} />
         <Route path='/*' element={<NotFound/>} />
         
