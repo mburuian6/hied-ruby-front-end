@@ -3,7 +3,7 @@ import { Grid, TextField } from '@mui/material';
 import { Button } from '@mui/material';
 import { makeStyles } from "@mui/styles";
 import { useNavigate } from 'react-router-dom';
-import { API_JOBS_URL, API_JOBS_PATH } from '../config';
+import { API_JOBS_PATH } from '../config';
 import { isPersistedState } from '../helpers';
 import { defaultInstance as axios}  from '../axiosConfig';
 import { toast } from '../FlashNotification/FlashNotification';
@@ -20,7 +20,6 @@ const useStyles = makeStyles({
 
 const JobForm = () => {
 
-    const api_url = API_JOBS_URL;
     const navigate = useNavigate();
 
     const [title,setTitle] = useState('');
