@@ -5,7 +5,7 @@ import { persistedState } from '../helpers';
 const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isAuthenticated = persistedState('token');
+  const isAuthenticated = persistedState('access_token');
 
   return isAuthenticated? children: <Navigate to="/login" replace state={{ path: location.pathname }}/>;
 }
