@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import JobItem from '../JobItem/JobItem';
 import { Grid, Button } from '@mui/material';
-import { API_JOBS_URL, API_JOBS_PATH } from '../config';
+import { API_JOBS_PATH } from '../config';
 import { defaultInstance as axios} from '../axiosConfig';
 import toast from '../FlashNotification/FlashNotification';
 
@@ -21,7 +21,7 @@ const JobList = () => {
     })
     .catch((error) => {
         //network failed for some reason, get cached content
-        caches.match(API_JOBS_URL)
+        caches.match(API_JOBS_PATH)
         .then (response => {
           if(!response){
             retryJobs();
