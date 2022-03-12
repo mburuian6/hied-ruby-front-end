@@ -56,8 +56,10 @@ export default function SignUp() {
           toast.success('Register successful!');
         })
         .catch((error) => {
-          console.log(error.toJSON());
-          toast.error('Register error, '+new Error(error.body));
+          console.log(error);
+          if(error.toString().includes('422')) 
+            toast.error('Username or email taken, ');
+          else toast.error('Register error, '+new Error(error.body));
         })
         
     }
