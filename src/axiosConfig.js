@@ -6,10 +6,10 @@ import { persistedState, persistState } from './helpers';
 const defaultInstance = axios.create({ baseURL: BASE_URL })
 
 defaultInstance.defaults.headers.common['mode'] = 'cors'
-defaultInstance.defaults.withCredentials = true
-if (persistedState('token')) {
+// defaultInstance.defaults.withCredentials = true
+if (persistedState('access_token')) {
   defaultInstance.defaults.headers.common['Authorization'] = 
-    `Bearer ${persistedState('token').access_token.replaceAll('"','')}`;
+    `Bearer ${persistedState('access_token').replaceAll('"','')}`;
 }
 
 defaultInstance.interceptors.request.use(request => {
@@ -30,18 +30,18 @@ const loginGrantType = "password";
 
 const authInstance = axios.create({ baseURL: BASE_URL })
 authInstance.defaults.headers.common['mode'] = 'cors'
-authInstance.defaults.withCredentials = false;
+// authInstance.defaults.withCredentials = false;
 
 authInstance.interceptors.request.use(request => {
-  request.params['client_id'] = clientId;
+  request.data['client_id'] = clientId;
 
   if (request.url.includes('/oauth/token')) {
     //login
-    request.params['client_secret'] = clientSecret;
-    request.params['grant_type'] = loginGrantType;
+    request.data['client_secret'] = clientSecret;
+    request.data['grant_type'] = loginGrantType;
   } else if (request.url.includes('/oauth/revoke')){
     //revoke - logout
-    request.params['client_secret'] = clientSecret;
+    request.data['client_secret'] = clientSecret;
   }
   
   console.log('Starting Request', JSON.stringify(request, null, 2))
@@ -50,7 +50,13 @@ authInstance.interceptors.request.use(request => {
 
 authInstance.interceptors.response.use(response => {
   console.log('Response:', JSON.stringify(response, null, 2))
-  if(response.access_token != null ) persistState('token', response.data);
+  if(response.data.user.access_token != null ) {
+    persistState('username', response.data.user.username);
+    persistState('access_token', response.data.user.access_token);
+    persistState('expires_in', response.data.user.expires_in);
+    persistState('refresh_token', response.data.user.refresh_token);
+    persistState('created_at', response.data.user.created_at);
+  }
   return response;
 })
 
