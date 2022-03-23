@@ -12,8 +12,8 @@ export const persistState = (key, value) => {
 }
 
 export const isLoggedIn = () =>{
-  var sessionState = sessionStorage.getItem('authenticationToken');
-  if (sessionState && JSON.parse(sessionState)) return true;
+  var sessionState = sessionStorage.getItem('access_token');
+  if (sessionState) return true;
   return false;
 }
 
