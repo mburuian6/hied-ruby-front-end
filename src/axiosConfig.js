@@ -50,12 +50,12 @@ authInstance.interceptors.request.use(request => {
 
 authInstance.interceptors.response.use(response => {
   console.log('Response:', JSON.stringify(response, null, 2))
-  if(response.data.user.access_token != null ) {
-    persistState('username', response.data.user.username);
-    persistState('access_token', response.data.user.access_token);
-    persistState('expires_in', response.data.user.expires_in);
-    persistState('refresh_token', response.data.user.refresh_token);
-    persistState('created_at', response.data.user.created_at);
+  if(response.data.access_token != null ) {
+    persistState('username', response.data.username);
+    persistState('access_token', response.data.access_token);
+    persistState('expires_in', response.data.expires_in);
+    persistState('refresh_token', response.data.refresh_token);
+    persistState('created_at', response.data.created_at);
   }
   return response;
 })

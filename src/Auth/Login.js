@@ -56,7 +56,7 @@ export default function Login() {
       toast.success('You are successfully logged in');
     })
     .catch((error) => {
-      console.log(error.toJSON());
+      console.log(error);
       toast.error('Login error, '+new Error(error.body));
     })
     
