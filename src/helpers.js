@@ -21,6 +21,13 @@ export const timeFormat = startTime => {
   return new Date(startTime).toLocaleDateString()
 }
 
+export const clearStorage = () => {
+  var keys = ['username','access_token', 'expires_in','refresh_token','created_at']
+  keys.forEach(element => {
+    sessionStorage.removeItem(element);
+  });
+}
+
 const isIndexDbSupported = () => {
   if (!('indexedDB' in window)) {
     console.log('This browser doesn\'t support IndexedDB');
