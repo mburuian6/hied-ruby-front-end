@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { API_JOBS_PATH } from "../config";
 import { isPersistedState } from "../helpers";
 import { defaultInstance as axios } from "../axiosConfig";
-import { toast } from "../FlashNotification/FlashNotification";
+import toast from "../FlashNotification/FlashNotification";
 
 const useStyles = makeStyles({
   root: {
@@ -42,6 +42,12 @@ const JobForm = () => {
     var start = new Date(data.get("start"));
     data.set("start", start.toUTCString());
 
+    var pay = data.get("pay");
+    if (pay < 0) {
+      toast.error("Pay must be equal to or greater than zero");
+      return;
+    }
+
     console.log(JSON.stringify(Object.fromEntries(data.entries())));
 
     await axios
@@ -76,65 +82,66 @@ const JobForm = () => {
   };
 
   return (
-    <Grid>
-      <Grid item xs></Grid>
-      <Grid item xs={10}>
-        <form onSubmit={handleSubmit} id="job_entry_form" autoComplete="off">
-          <TextField
-            id="title"
-            label="Title"
-            variant="filled"
-            type="text"
-            value={title}
-            name="title"
-            onChange={handleTitleChange}
-            required
-          />{" "}
-          <br />
-          <TextField
-            id="pay"
-            label="Pay"
-            variant="filled"
-            type="number"
-            value={pay}
-            name="pay"
-            onChange={handlePayChange}
-            required
-          />{" "}
-          <br />
-          <TextField
-            id="start"
-            label="Start"
-            variant="filled"
-            type="datetime-local"
-            value={start}
-            name="start"
-            onChange={handleStartChange}
-            required
-          />
-          <br />
-          <TextField
-            id="description"
-            label="Description"
-            variant="filled"
-            type="text"
-            placeholder="..."
-            multiline
-            style={{ backgroundColor: " white", color: " white" }}
-            value={description}
-            name="description"
-            onChange={handleDescriptionChange}
-          />
-          <br />
-          <Button variant="contained" color="primary" type="submit">
-            {" "}
-            Post Job{" "}
-          </Button>
-        </form>
+    <form onSubmit={handleSubmit} id="job_entry_form" autoComplete="off">
+      <Grid container columnSpacing={2} >
+      <Grid item xs={12} sm={4}>
+        <TextField
+          id="title"
+          label="Title"
+          variant="filled"
+          type="text"
+          value={title}
+          name="title"
+          onChange={handleTitleChange}
+          required
+        />
+        </Grid>
+        <Grid item xs={12} sm={4}>
+        <TextField
+          id="pay"
+          label="Pay"
+          variant="filled"
+          type="number"
+          value={pay}
+          name="pay"
+          onChange={handlePayChange}
+          required
+        />
+        </Grid>
+        <Grid item xs={12} sm={4}>
+        <TextField
+          id="start"
+          label="Start"
+          variant="filled"
+          type="datetime-local"
+          value={start}
+          name="start"
+          onChange={handleStartChange}
+          required
+        />
+        </Grid>
+        <Grid item xs={12} sm={12}>
+        <TextField
+          id="description"
+          label="Description"
+          variant="filled"
+          type="text"
+          placeholder="..."
+          multiline
+          style={{ backgroundColor: " white", color: " white" }}
+          value={description}
+          name="description"
+          onChange={handleDescriptionChange}
+        />
+        </Grid>
+        <Grid item xs={12} sm={12} >
+        <Button variant="contained" color="primary" type="submit">
+          {" "}
+          Post Job{" "}
+        </Button>
+        </Grid>
       </Grid>
-
-      <Grid item xs></Grid>
-    </Grid>
+    </form>
   );
 };
 
