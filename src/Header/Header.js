@@ -1,21 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Grid, Typography } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Button,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import { isLoggedIn, persistedState } from "../helpers";
-import { Headroom } from "react-headroom";
+import IconButton from "@mui/material/IconButton";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const [loggedIn, setLoggedIn] = React.useState(isLoggedIn());
+  const navigate = useNavigate();
+
   const HasLoggedIn = () => {
     return (
       <>
-        <Grid container spacing={2} justifyContent="flex-end">
-          <Grid item>
-            Logged in:
-            <Link to="" variant="body2">
-              {persistedState("username")}
-            </Link>
-          </Grid>
-        </Grid>
+        <Button color="inherit">
+          {persistedState("username").charAt(0)}
+        </Button>
       </>
     );
   };
@@ -23,20 +29,8 @@ const Header = () => {
   const HasNotLoggedIn = () => {
     return (
       <>
-        <Grid container spacing={2} justifyContent="flex-end">
-        <Grid item>
-          <Link to="/signup" variant="body2">
-            Sign Up
-          </Link>
-        </Grid>
-        {"  "}
-        <Grid item>
-          <Link to="/login" variant="body2">
-            Login
-          </Link>
-        </Grid>
-      </Grid>
-
+        <Button color="inherit" href={'/login'}>Login</Button>
+        <Button color="inherit" href={'/signup'}>Sign Up</Button>
       </>
     );
   };
@@ -48,24 +42,47 @@ const Header = () => {
     return <HasNotLoggedIn />;
   };
 
+  // return (
+  //   <>
+  //
+  //     <Grid container>
+  //     <Grid item>
+  //
+  //     <Link to="/">
+  //     <header>
+  //     <Typography variant="h3" color="black">
+  //     Hi'ed
+  //     </Typography>
+  //     </header>
+  //     </Link>
+  //
+  //     </Grid>
+  //     </Grid>
+  //     <AppHeader />
+  //   </>
+  // );
+
   return (
-    <>
-
-      <Grid container>
-      <Grid item>
-
-      <Link to="/">
-      <header>
-      <Typography variant="h3" color="black">
-      Hi'ed
-      </Typography>
-      </header>
-      </Link>
-
-      </Grid>
-      </Grid>
-      <AppHeader /> 
-    </>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+            href={'/'}
+          >
+            <AccountBalanceIcon />
+          </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Hi'ed
+          </Typography>
+          <AppHeader />
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 };
 
