@@ -1,21 +1,15 @@
 import React, { useState } from "react";
-import { Grid, TextField } from "@mui/material";
+import { Divider, Grid, Stack, TextField } from "@mui/material";
 import { Button } from "@mui/material";
-import { makeStyles } from "@mui/styles";
 import { useNavigate } from "react-router-dom";
 import { API_JOBS_PATH } from "../config";
 import { isPersistedState } from "../helpers";
 import { defaultInstance as axios } from "../axiosConfig";
 import toast from "../FlashNotification/FlashNotification";
-
-const useStyles = makeStyles({
-  root: {
-    height: "auto",
-    padding: "2em",
-    margin: "1em",
-    width: "100%",
-  },
-});
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import DateTimePicker from '@mui/lab/DateTimePicker';
+// import DateAdapter from '@mui/lab/AdapterMoment';
 
 const JobForm = () => {
   const navigate = useNavigate();
@@ -23,8 +17,8 @@ const JobForm = () => {
   const [title, setTitle] = useState("");
   const [pay, setPay] = useState(0);
   const [start, setStart] = useState(Date.now);
-  const [closed, setClosed] = useState(false);
   const [description, setDescription] = useState("");
+  // const [error, setError] = useState(false); 
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -70,11 +64,17 @@ const JobForm = () => {
   };
 
   const handlePayChange = (event) => {
+    console.log(event.target.value);
+    // if(event.target.value < 0){
+    //   setError(false);
+    //   return;
+    // }
+    // setError(true);
     setPay(event.target.value);
   };
 
   const handleStartChange = (event) => {
-    setStart(event.target.value);
+    setStart(event);
   };
 
   const handleDescriptionChange = (event) => {
@@ -82,66 +82,83 @@ const JobForm = () => {
   };
 
   return (
+    // <LocalizationProvider dateAdapter={DateAdapter}>
     <form onSubmit={handleSubmit} id="job_entry_form" autoComplete="off">
-      <Grid container columnSpacing={2} >
-      <Grid item xs={12} sm={4}>
-        <TextField
-          id="title"
-          label="Title"
-          variant="filled"
-          type="text"
-          value={title}
-          name="title"
-          onChange={handleTitleChange}
-          required
-        />
+      <Stack spacing={3}>{/*  <Grid container columnSpacing={2}>  */}
+        <Grid item xs={12} sm={4}>
+          <TextField
+            id="title"
+            label="Title"
+            variant="filled"
+            type="text"
+            value={title}
+            name="title"
+            onChange={handleTitleChange}
+            required
+          />
         </Grid>
         <Grid item xs={12} sm={4}>
-        <TextField
-          id="pay"
-          label="Pay"
-          variant="filled"
-          type="number"
-          value={pay}
-          name="pay"
-          onChange={handlePayChange}
-          required
-        />
+          <TextField
+            error
+            helperText="Pay cannot be negative"
+            id="pay"
+            label="Pay"
+            variant="filled"
+            type="number"
+            value={pay}
+            name="pay"
+            onChange={handlePayChange}
+            required
+          />
         </Grid>
+        <Divider/>
+
         <Grid item xs={12} sm={4}>
-        <TextField
-          id="start"
-          label="Start"
-          variant="filled"
-          type="datetime-local"
-          value={start}
-          name="start"
-          onChange={handleStartChange}
-          required
-        />
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <DateTimePicker
+              id="start"
+              label="Start"
+              value={start}
+              name="start"
+              onChange={handleStartChange}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </LocalizationProvider>
+          {/* <TextField
+            id="start"
+            label="Start"
+            variant="filled"
+            type="datetime-local"
+            value={start}
+            name="start"
+            onChange={handleStartChange}
+            required
+          /> */}
+        </Grid>
+
+        <Grid item xs={12} sm={12}>
+          <TextField
+            id="description"
+            label="Description"
+            variant="filled"
+            type="text"
+            placeholder="..."
+            multiline
+            style={{ backgroundColor: " white", color: " white" }}
+            value={description}
+            name="description"
+            onChange={handleDescriptionChange}
+          />
         </Grid>
         <Grid item xs={12} sm={12}>
-        <TextField
-          id="description"
-          label="Description"
-          variant="filled"
-          type="text"
-          placeholder="..."
-          multiline
-          style={{ backgroundColor: " white", color: " white" }}
-          value={description}
-          name="description"
-          onChange={handleDescriptionChange}
-        />
+          <Button variant="contained" color="primary" type="submit">
+            {" "}
+            Post Job{" "}
+          </Button>
         </Grid>
-        <Grid item xs={12} sm={12} >
-        <Button variant="contained" color="primary" type="submit">
-          {" "}
-          Post Job{" "}
-        </Button>
-        </Grid>
-      </Grid>
+      </Stack>{/* </Grid> */}
     </form>
+    // </LocalizationProvider>
   );
 };
 
