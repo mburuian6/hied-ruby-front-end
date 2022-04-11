@@ -69,7 +69,6 @@ const JobList = () => {
           <JobItem
           job={item}
           jobIndex = {index}
-          jobId={item.id}
           jobLink = {item['_links']['self']}
           />
         </Grid>
