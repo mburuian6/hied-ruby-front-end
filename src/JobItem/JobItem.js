@@ -42,7 +42,7 @@ export default function JobItem( props ) {
       <CardHeader
         avatar={
           <Avatar aria-label="recipe">
-            {props.job.owner.charAt(0).toUpperCase()}
+            {props.job.username.charAt(0).toUpperCase()}
           </Avatar>
         }
         action={

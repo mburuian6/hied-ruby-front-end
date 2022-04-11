@@ -3,7 +3,7 @@ import { Divider, Grid, Stack, TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { API_JOBS_PATH } from "../config";
-import { isPersistedState } from "../helpers";
+import {persistedState} from "../helpers";
 import { defaultInstance as axios } from "../axiosConfig";
 import toast from "../FlashNotification/FlashNotification";
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -28,10 +28,8 @@ const JobForm = () => {
   const formSubmit = async (formData) => {
     var data = new FormData(formData);
 
-    var owner = isPersistedState("email")
-      ? isPersistedState("email").replaceAll('"', "")
-      : "owner";
-    data.append("owner", owner);
+    var username = persistedState("username");
+    data.append("username", username);
 
     var start = new Date(data.get("start"));
     data.set("start", start.toUTCString());

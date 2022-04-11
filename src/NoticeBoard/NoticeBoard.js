@@ -5,12 +5,11 @@ import { defaultInstance as axios} from '../axiosConfig';
 import toast from '../FlashNotification/FlashNotification';
 import 'react-chat-elements/dist/main.css';
 import { ChatList } from 'react-chat-elements';
-import { MessageList } from 'react-chat-elements';
 import { SideBar } from 'react-chat-elements';
 
 const NoticeBoard = (  ) => {
 
-  const { owner } = useParams();
+  const { username } = useParams();
   const [added, setAdded] = useState(false);
   const [notifications, setNotifications] = useState([]);
 
@@ -21,7 +20,7 @@ const NoticeBoard = (  ) => {
   const getNotifications = () => {
     axios.get(API_ALL_NOTIFICATIONS,{
       params: {
-        owner: owner.toString()
+        username: username.toString()
       }
     })
     .then((response) => {

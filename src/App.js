@@ -22,7 +22,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route path='/' element={<Home/>} />
-        <Route path='/notice-board/:owner' element={<ProtectedRoute>< NoticeBoard /></ProtectedRoute>} />
+        <Route path='/notice-board/:username' element={<ProtectedRoute>< NoticeBoard /></ProtectedRoute>} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
         <Route path='/logout' element={<Logout />} />

@@ -10,7 +10,7 @@ const BidItem = ({ bid, acceptBid }) =>{
   return (
     <>
       <hr/>
-      <Typography variant='subtitle2'> Bid by: <i>{bid.owner} </i>
+      <Typography variant='subtitle2'> Bid by: <i>{bid.username} </i>
       Pay: {bid.pay} <Button onClick={acceptBidLocal}> Accept </Button>
       </Typography>
       <Typography variant='caption'> {bid.picked? 'Accepted':''} </Typography>

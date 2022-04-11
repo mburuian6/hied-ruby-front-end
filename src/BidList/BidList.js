@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import BidItem from '../BidItem/BidItem';
 import { API_POST_BIDS_PATH, API_ACCEPT_BID_PATH } from "../config";
 import BidForm from '../BidForm/BidForm';
-
 import { defaultInstance as axios} from '../axiosConfig';
 import toast from '../FlashNotification/FlashNotification';
 import { useNavigate } from 'react-router-dom';
@@ -19,7 +18,7 @@ const BidList = ({ job }) => {
     console.log(bid); //post_id, bid_id
     //const bidId = bid._links.self.href.split('/').at(-1); // TODO: Change this to use markers
     const bidId = bid.hash_id;
-    
+
     await axios.put(API_ACCEPT_BID_PATH, 
       {
         post_id: postId,
@@ -28,7 +27,7 @@ const BidList = ({ job }) => {
     )
     .then((response)=>{
       if (response.status == 200) {
-        navigate(`/notice-board/${job.owner}`)
+        navigate(`/notice-board/${job.username}`)
       } else {
         toast.error('Failed to accept bid. Try again or contact support')
       }

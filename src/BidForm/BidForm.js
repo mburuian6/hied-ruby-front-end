@@ -3,7 +3,7 @@ import { Snackbar } from '@mui/material';
 import { API_BIDS_PATH } from "../config";
 import { Button, TextField } from "@mui/material";
 import { defaultInstance as axios } from "../axiosConfig";
-import { isPersistedState } from "../helpers";
+import {isPersistedState, persistedState} from "../helpers";
 import toast from '../FlashNotification/FlashNotification';
 
 
@@ -20,10 +20,9 @@ const BidForm = ({ addBid, postId }) => {
 
     const formSubmit = async (formData) => {
       var data = new FormData(formData);
-      var owner = isPersistedState('email')?
-        isPersistedState('email').replaceAll('"',''): 'owner';
+      var username = persistedState("username").replaceAll('"','');
 
-      data.append('owner', owner);
+      data.append('username', username);
       data.append('post_id', postId);
       console.log(JSON.stringify(Object.fromEntries(data.entries())));
 
