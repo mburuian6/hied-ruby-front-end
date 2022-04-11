@@ -10,14 +10,16 @@ import { useNavigate } from 'react-router-dom';
 const BidList = ({ job }) => {
  
   const[bids, setBids] = useState([]);
-  const postId = job._links.self.href.split('/').at(-1);
+  //const postId = job._links.self.href.split('/').at(-1);
+  const postId = job.hash_id;
   const [added, setAdded] = useState(false);
   const navigate = useNavigate();
 
   const acceptBid = async (bid) => {
     console.log(bid); //post_id, bid_id
-    const bidId = bid._links.self.href.split('/').at(-1);
-
+    //const bidId = bid._links.self.href.split('/').at(-1); // TODO: Change this to use markers
+    const bidId = bid.hash_id;
+    
     await axios.put(API_ACCEPT_BID_PATH, 
       {
         post_id: postId,
