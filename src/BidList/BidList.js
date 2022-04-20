@@ -5,6 +5,7 @@ import BidForm from '../BidForm/BidForm';
 import { defaultInstance as axios} from '../axiosConfig';
 import toast from '../FlashNotification/FlashNotification';
 import { useNavigate } from 'react-router-dom';
+import ActionCable from 'actioncable';
 
 const BidList = ({ job }) => {
  
