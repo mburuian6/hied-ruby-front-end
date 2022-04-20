@@ -69,6 +69,9 @@ const BidList = ({ job }) => {
   const addBid = ( response ) => {
     console.log(`add bid method: ${response}`);
     setAdded(true);
+
+  const handleNewBid = (bid) => {
+    bids.push(bid)
   }
 
   const streamFromBidsChannel = () => {
@@ -76,10 +79,6 @@ const BidList = ({ job }) => {
     const sub = cable.subscriptions.create('BidsChannel', {
       received: handleNewBid()
     })
-
-    const handleNewBid = (bid) => {
-      bids.push(bid)
-    }
   }
 
   //Send to cable channel
