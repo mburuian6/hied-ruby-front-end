@@ -52,6 +52,7 @@ const BidList = ({ job }) => {
     .then((response) => {
         if(response.data._embedded != undefined) {
           setBids(response.data._embedded.bids?.reverse());
+          // streamFromBidsChannel();
         }
       })
     .catch((error) => {
@@ -70,7 +71,16 @@ const BidList = ({ job }) => {
     setAdded(true);
   }
 
-  
+  const streamFromBidsChannel = () => {
+    const cable = ActionCable.createConsumer('ws://localhost:8080/cable');
+    const sub = cable.subscriptions.create('BidsChannel', {
+      received: handleNewBid()
+    })
+
+    const handleNewBid = (bid) => {
+      // add the new bid to the list
+    }
+  }
   return(
     <div> 
       {/* bid form */}
