@@ -81,6 +81,10 @@ const BidList = ({ job }) => {
       // add the new bid to the list
     }
   }
+
+  //Send to cable channel
+  // this.sub.send({ text: e.target.value, id: 1 })
+
   return(
     <div> 
       {/* bid form */}
