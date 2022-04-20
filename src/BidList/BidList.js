@@ -41,6 +41,7 @@ const BidList = ({ job }) => {
   useEffect (() => {
     getBids();
     setAdded(false);
+    streamFromBidsChannel();
   }, [added])
 
   const getBids = () => {
@@ -52,7 +53,6 @@ const BidList = ({ job }) => {
     .then((response) => {
         if(response.data._embedded != undefined) {
           setBids(response.data._embedded.bids?.reverse());
-          // streamFromBidsChannel();
         }
       })
     .catch((error) => {
