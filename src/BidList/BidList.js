@@ -78,7 +78,7 @@ const BidList = ({ job }) => {
     })
 
     const handleNewBid = (bid) => {
-      // add the new bid to the list
+      bids.push(bid)
     }
   }
 
