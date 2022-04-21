@@ -16,7 +16,7 @@ const JobForm = () => {
 
   const [title, setTitle] = useState("");
   const [pay, setPay] = useState(0);
-  const [start, setStart] = useState(Date.now);
+  const [start, setStart] = useState(new Date());
   const [description, setDescription] = useState("");
   // const [error, setError] = useState(false); 
 
@@ -46,8 +46,8 @@ const JobForm = () => {
       .post(API_JOBS_PATH, Object.fromEntries(data.entries()))
       .then(() => {
         setTitle("");
-        setPay("");
-        setStart("");
+        setPay(0.0);
+        setStart(new Date());
         setDescription("");
 
         navigate("/");
