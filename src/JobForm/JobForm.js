@@ -31,7 +31,6 @@ const JobForm = () => {
     var username = persistedState("username");
     data.append("username", username);
 
-    var start = new Date(data.get("start"));
     data.set("start", start.toUTCString());
 
     var pay = data.get("pay");
