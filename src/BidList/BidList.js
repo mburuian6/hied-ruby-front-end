@@ -14,6 +14,7 @@ const BidList = ({ job }) => {
   const postHashId = job.hash_id;
   const [added, setAdded] = useState(false);
   const navigate = useNavigate();
+  const cable = ActionCable.createConsumer('ws://localhost:8080/cable');
 
   const acceptBid = async (bid) => {
     console.log(bid); //post_id, bid_id
