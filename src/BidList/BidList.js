@@ -86,9 +86,13 @@ const BidList = ({ job }) => {
   }
 
   const streamFromBidsChannel = () => {
-    const cable = ActionCable.createConsumer('ws://localhost:8080/cable');
-    const sub = cable.subscriptions.create('BidsChannel', {
-      received: handleNewBid()
+    console.log("---------------------Attempting to find channel")
+    cable.disconnect()
+    cable.subscriptions.create({channel: 'BidsChannel', job_hash_id: postHashId }, {
+      received: (data)=> {
+        console.log(`1. Received a bid ${JSON.stringify(data)}`)
+        handleNewBid(data)
+      }
     })
   }
 
