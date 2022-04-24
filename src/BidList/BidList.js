@@ -38,12 +38,6 @@ const BidList = ({ job }) => {
     })
   }
 
-  useEffect (() => {
-    getBids();
-    setAdded(false);
-    streamFromBidsChannel();
-  }, [added])
-
   const getBids = () => {
     axios.get(API_POST_BIDS_PATH,{
       params: {
@@ -83,6 +77,17 @@ const BidList = ({ job }) => {
 
   //Send to cable channel
   // this.sub.send({ text: e.target.value, id: 1 })
+
+  useEffect (() => {
+    getBids();
+    setAdded(false);
+  }, [added])
+
+  // useEffect(() => {
+  //   return () => {
+  //     cable.disconnect()
+  //   }
+  // },[])
 
   return(
     <div> 
