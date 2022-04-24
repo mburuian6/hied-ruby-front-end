@@ -45,9 +45,10 @@ const BidList = ({ job }) => {
       }
     })
     .then((response) => {
-        if(response.data._embedded != undefined) {
-          setBids(response.data._embedded.bids?.reverse());
-        }
+      if(response.data._embedded != undefined) {
+        setBids(response.data._embedded.bids?.reverse());
+      }
+      streamFromBidsChannel();
       })
     .catch((error) => {
         console.log(error);
