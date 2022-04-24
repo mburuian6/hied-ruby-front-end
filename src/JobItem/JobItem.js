@@ -94,7 +94,7 @@ export default function JobItem( props ) {
           </Typography>
           <Typography>
             <i>
-                by:user
+                by: {props.job.username}
             </i>
           </Typography>
         </CardContent>
