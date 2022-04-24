@@ -67,8 +67,22 @@ const BidList = ({ job }) => {
     // setAdded(true);
   }
 
-  const handleNewBid = (bid) => {
-    bids.push(bid)
+  const handleNewBid = ( bid ) => {
+    console.log(`2. Received a bid ${JSON.stringify(bid)}`)
+    console.log("old length of bids ",bids.length)
+    let newBid = true;
+
+    for (let i = 0; i < bids; i++) {
+      let arrBid = bids[i]
+      if (bid.username === arrBid.username && bid.post_id === arrBid.post_id){
+        newBid = false
+        bids[i] = bid
+      }
+    }
+
+    if(newBid) setBids([...bids,bid])
+    console.log("new length of bids ", bids.length)
+    console.log(bids)
   }
 
   const streamFromBidsChannel = () => {
