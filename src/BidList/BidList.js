@@ -63,7 +63,8 @@ const BidList = ({ job }) => {
 
   const addBid = ( response ) => {
     console.log(`add bid method: ${response}`);
-    setAdded(true);
+    // setAdded(true);
+  }
 
   const handleNewBid = (bid) => {
     bids.push(bid)
