@@ -58,7 +58,7 @@ export default function JobItem( props ) {
             {props.job.title}
           </Link>          
         }
-        subheader={new Date(props.job.start).toLocaleDateString()}
+        subheader={new Date(props.job.start).toLocaleString()}
       /> 
       {/* <CardMedia component="img" height="194" image=""/> */}
       <CardContent>
