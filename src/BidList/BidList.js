@@ -11,19 +11,19 @@ const BidList = ({ job }) => {
  
   const[bids, setBids] = useState([]);
   //const postId = job._links.self.href.split('/').at(-1);
-  const postId = job.hash_id;
+  const postHashId = job.hash_id;
   const [added, setAdded] = useState(false);
   const navigate = useNavigate();
 
   const acceptBid = async (bid) => {
     console.log(bid); //post_id, bid_id
     //const bidId = bid._links.self.href.split('/').at(-1); // TODO: Change this to use markers
-    const bidId = bid.hash_id;
+    const bidHashId = bid.hash_id;
 
     await axios.put(API_ACCEPT_BID_PATH, 
       {
-        post_id: postId,
-        bid_id: bidId
+        post_hash_id: postHashId,
+        bid_hash_id: bidHashId
       }
     )
     .then((response)=>{
@@ -47,7 +47,7 @@ const BidList = ({ job }) => {
   const getBids = () => {
     axios.get(API_POST_BIDS_PATH,{
       params: {
-        post_id: postId
+        post_hash_id: postHashId
       }
     })
     .then((response) => {
@@ -87,7 +87,7 @@ const BidList = ({ job }) => {
   return(
     <div> 
       {/* bid form */}
-      <BidForm addBid = { addBid } postId={ postId }/>
+      <BidForm addBid = { addBid } postHashId={ postHashId }/>
 
       {/* list */}
       {bids.map((bid,index) => ( 
