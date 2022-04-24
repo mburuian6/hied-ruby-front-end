@@ -7,7 +7,7 @@ import {isPersistedState, persistedState} from "../helpers";
 import toast from '../FlashNotification/FlashNotification';
 
 
-const BidForm = ({ addBid, postId }) => {
+const BidForm = ({ addBid, postHashId }) => {
     const [pay, setPay] = useState(0);
     const [notes, setNotes] = useState("");
     // const [myBid, setMyBid] = useState();
@@ -23,7 +23,7 @@ const BidForm = ({ addBid, postId }) => {
       var username = persistedState("username").replaceAll('"','');
 
       data.append('username', username);
-      data.append('post_id', postId);
+      data.append('post_hash_id', postHashId);
       console.log(JSON.stringify(Object.fromEntries(data.entries())));
 
       await axios.post(API_BIDS_PATH, Object.fromEntries(data.entries())
