@@ -24,7 +24,6 @@ const BidForm = ({ addBid, postHashId }) => {
 
       data.append('username', username);
       data.append('post_hash_id', postHashId);
-      console.log(JSON.stringify(Object.fromEntries(data.entries())));
 
       await axios.post(API_BIDS_PATH, Object.fromEntries(data.entries())
       )
