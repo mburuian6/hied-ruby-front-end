@@ -17,7 +17,7 @@ const JobView = (props) => {
       <BreadCrumb jobTitle={job.title}/>
       <p>Job Title: {job.title}</p>
       <p>Pay: {job.pay}</p>
-      <p>Start: {timeFormat(job.start)}</p>
+      <p>Start: {new Date(job.start).toLocaleString() }</p>
       <p>Status: { job.closed == false? 'Open': 'Closed'}</p>
       <h5>Job Description:</h5> <p>{job.description}</p>
 
