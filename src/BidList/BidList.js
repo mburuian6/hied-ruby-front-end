@@ -69,15 +69,19 @@ const BidList = ({ job }) => {
   const handleNewBid = ( bid ) => {
     let newBid = true;
 
-    for (let i = 0; i < bids; i++) {
-      let arrBid = bids[i]
-      if (bid.username === arrBid.username && bid.post_id === arrBid.post_id){
-        newBid = false
-        bids[i] = bid
+    for (let i = 0; i < bids_copy.length; i++) {
+      if(bids_copy[i].username === bid.username){
+        bids_copy[i] = bid;
+        newBid = false;
       }
     }
 
-    if(newBid) setBids([...bids,bid])
+    if(newBid){
+      bids_copy.push(bid);
+    }
+
+    console.log(`New bids copy: ${JSON.stringify(bids_copy)}`);
+    setBids(bids_copy.slice().sort((a, b) => a.pay - b.pay).reverse());
   }
 
   const streamFromBidsChannel = () => {
