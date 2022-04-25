@@ -1,0 +1,29 @@
+-
+- serviceworker - swtoolbox,swprecache lib -> workbox
+- Non static assets -> IndexDb
+- Responsive pages & images
+- Fail gracefully (navigator.online())
+- Cache static assets (workbox) 
+- appshell 
+  (SSR both shell + 
+  content for entry page) + 
+  use JavaScript to fetch content for any further routes 
+  and do a "take over"
+  - manifest file and precache appshell
+  - installation prompt
+- Push notifications
+- encrypt requestss & resources
+- payment
+- google analytics
+-----------
+- add to homescreen
+- push notifications
+- payment & credential mgmt
+---------------
+
+- if user has bidded, attach to the top pf bids
+- form input constraints, bidform, jobform
+- capture 401 responses and go to login
+- silent refresh
+
+
