@@ -10,8 +10,8 @@ import ActionCable from 'actioncable';
 const BidList = ({ job }) => {
  
   const[bids, setBids] = useState([]);
-  const postHashId = job.hash_id;
   const [added, setAdded] = useState(false);
+  const postHashId = job.hash_id;
   const navigate = useNavigate();
   const cable = ActionCable.createConsumer('ws://localhost:8080/cable');
 
