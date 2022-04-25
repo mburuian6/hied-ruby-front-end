@@ -31,6 +31,10 @@ const Header = () => {
     navigate('/');
   }
 
+  const handleGoToNotifications = () => {
+    navigate(`/notice-board/${persistedState("username")}`)
+  }
+
   const HasLoggedIn = () => {
     return (
       <>
@@ -38,17 +42,17 @@ const Header = () => {
         {/*  {persistedState("username").charAt(0)}*/}
         {/*</Button>*/}
 
+        <Badge
+          badgeContent={badgeContent}
+          color="secondary"
+          max={10}
+          sx={{ width: 30, height: 30 }}
+          variant={'dot'}
+          onClick={handleGoToNotifications}
+        >
+          <MailIcon />
+        </Badge>
         <div>
-          <Badge
-            badgeContent={badgeContent}
-            color="secondary"
-            max={10}
-            sx={{ width: 30, height: 30 }}
-            variant={'dot'}
-          >
-            <MailIcon />
-          </Badge>
-
           <IconButton
             size="large"
             aria-label="account of current user"
@@ -82,7 +86,6 @@ const Header = () => {
             <Divider/>
             <MenuItem onClick={handleClose}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>My account</MenuItem>
-            <Divider/>
             <MenuItem onClick={handleLogout}>Logout</MenuItem>
           </Menu>
         </div>
