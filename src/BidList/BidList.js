@@ -14,6 +14,7 @@ const BidList = ({ job }) => {
   const postHashId = job.hash_id;
   const navigate = useNavigate();
   const cable = ActionCable.createConsumer('ws://localhost:8080/cable');
+  var bids_copy;
 
   const acceptBid = async (bid) => {
     console.log(bid); //post_id, bid_id
@@ -46,6 +47,8 @@ const BidList = ({ job }) => {
     .then((response) => {
       if(response.data._embedded != undefined) {
         setBids(response.data._embedded.bids?.reverse());
+        bids_copy = response.data._embedded.bids?.sort((a, b) => a.pay - b.pay).reverse()
+        setBids(bids_copy);
       }
       streamFromBidsChannel();
       })
