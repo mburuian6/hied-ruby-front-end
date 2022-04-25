@@ -10,7 +10,6 @@ import ActionCable from 'actioncable';
 const BidList = ({ job }) => {
  
   const[bids, setBids] = useState([]);
-  //const postId = job._links.self.href.split('/').at(-1);
   const postHashId = job.hash_id;
   const [added, setAdded] = useState(false);
   const navigate = useNavigate();
@@ -18,7 +17,6 @@ const BidList = ({ job }) => {
 
   const acceptBid = async (bid) => {
     console.log(bid); //post_id, bid_id
-    //const bidId = bid._links.self.href.split('/').at(-1); // TODO: Change this to use markers
     const bidHashId = bid.hash_id;
 
     await axios.put(API_ACCEPT_BID_PATH, 
@@ -63,13 +61,10 @@ const BidList = ({ job }) => {
     }
 
   const addBid = ( response ) => {
-    console.log(`add bid method: ${response}`);
     // setAdded(true);
   }
 
   const handleNewBid = ( bid ) => {
-    console.log(`2. Received a bid ${JSON.stringify(bid)}`)
-    console.log("old length of bids ",bids.length)
     let newBid = true;
 
     for (let i = 0; i < bids; i++) {
@@ -81,8 +76,6 @@ const BidList = ({ job }) => {
     }
 
     if(newBid) setBids([...bids,bid])
-    console.log("new length of bids ", bids.length)
-    console.log(bids)
   }
 
   const streamFromBidsChannel = () => {
@@ -90,14 +83,10 @@ const BidList = ({ job }) => {
     cable.disconnect()
     cable.subscriptions.create({channel: 'BidsChannel', job_hash_id: postHashId }, {
       received: (data)=> {
-        console.log(`1. Received a bid ${JSON.stringify(data)}`)
         handleNewBid(data)
       }
     })
   }
-
-  //Send to cable channel
-  // this.sub.send({ text: e.target.value, id: 1 })
 
   useEffect (() => {
     getBids();
