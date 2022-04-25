@@ -7,14 +7,16 @@ import {
   Typography,
 } from "@mui/material";
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import { isLoggedIn, persistedState } from "../helpers";
+import {clearStorage, isLoggedIn, persistedState} from "../helpers";
 import IconButton from "@mui/material/IconButton";
 import Menu from '@mui/material/Menu';
 import MailIcon from '@mui/icons-material/Mail';
+import {useNavigate} from "react-router-dom";
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [badgeContent, setBadgeContent] = React.useState(20);
+  const navigate = useNavigate();
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -23,6 +25,11 @@ const Header = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleLogout = () => {
+    clearStorage();
+    navigate('/');
+  }
 
   const HasLoggedIn = () => {
     return (
@@ -75,6 +82,8 @@ const Header = () => {
             <Divider/>
             <MenuItem onClick={handleClose}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>My account</MenuItem>
+            <Divider/>
+            <MenuItem onClick={handleLogout}>Logout</MenuItem>
           </Menu>
         </div>
       </>
