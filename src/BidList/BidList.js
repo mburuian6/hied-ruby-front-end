@@ -95,15 +95,15 @@ const BidList = ({ job }) => {
   }
 
   useEffect (() => {
-    getBids();
-    setAdded(false);
-  }, [added])
+    // setAdded(false);
+  }, [])
 
-  // useEffect(() => {
-  //   return () => {
-  //     cable.disconnect()
-  //   }
-  // },[])
+  useEffect(() => {
+    getBids();
+    return () => {
+      cable.disconnect()
+    }
+  },[])
 
   return(
     <div> 
