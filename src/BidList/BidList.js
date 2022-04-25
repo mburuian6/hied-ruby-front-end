@@ -27,7 +27,7 @@ const BidList = ({ job }) => {
       }
     )
     .then((response)=>{
-      if (response.status == 200) {
+      if (response.status === 200) {
         navigate(`/notice-board/${job.username}`)
       } else {
         toast.error('Failed to accept bid. Try again or contact support')
@@ -45,8 +45,7 @@ const BidList = ({ job }) => {
       }
     })
     .then((response) => {
-      if(response.data._embedded != undefined) {
-        setBids(response.data._embedded.bids?.reverse());
+      if(response.data._embedded !== undefined) {
         bids_copy = response.data._embedded.bids?.sort((a, b) => a.pay - b.pay).reverse()
         setBids(bids_copy);
       }
