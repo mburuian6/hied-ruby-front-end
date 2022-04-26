@@ -4,8 +4,6 @@ import { API_ALL_NOTIFICATIONS } from "../config";
 import { defaultInstance as axios} from '../axiosConfig';
 import toast from '../FlashNotification/FlashNotification';
 import 'react-chat-elements/dist/main.css';
-import { ChatList } from 'react-chat-elements';
-import { SideBar } from 'react-chat-elements';
 
 const NoticeBoard = (  ) => {
 
