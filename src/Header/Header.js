@@ -38,10 +38,6 @@ const Header = () => {
   const HasLoggedIn = () => {
     return (
       <>
-        {/*<Button color="inherit">*/}
-        {/*  {persistedState("username").charAt(0)}*/}
-        {/*</Button>*/}
-
         <Badge
           badgeContent={badgeContent}
           color="secondary"
