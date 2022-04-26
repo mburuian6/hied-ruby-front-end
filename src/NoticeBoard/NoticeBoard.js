@@ -4,6 +4,8 @@ import { API_ALL_NOTIFICATIONS } from "../config";
 import { defaultInstance as axios} from '../axiosConfig';
 import toast from '../FlashNotification/FlashNotification';
 import 'react-chat-elements/dist/main.css';
+import {List} from "@mui/material";
+import NoticeItem from "../NoticeItem/NoticeItem";
 
 const NoticeBoard = (  ) => {
 
@@ -39,38 +41,11 @@ const NoticeBoard = (  ) => {
 
   return (
     <>
-    
-
-    
-
-<SideBar
-    top={
-        <div>'TOP' area</div>
-    }
-    center={
-      <div>
-        <ChatList
-          className='chat-list'
-          dataSource={[
-            {
-              avatar: 'https://facebook.github.io/react/img/logo.svg',
-              alt: 'Reactjs',
-              title: 'Facebook',
-              subtitle: 'What are you doing?',
-              date: new Date(),
-              unread: 0,
-            },
-      
-          ]} />
-      </div>
-    }
-    bottom={
-        <div>'BOTTOM' area</div>
-    }/>
-
-
-
-
+      <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+        {notifications.map((notification,index) => (
+          <NoticeItem key={index} notification={notification} />
+        ))}
+      </List>
     </>
   )
 }
