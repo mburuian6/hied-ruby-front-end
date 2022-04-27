@@ -7,6 +7,7 @@ import { useLightTopShadowStyles } from '@mui-treasury/styles/shadow/lightTop';
 import Card from "@mui/material/Card";
 import cx from 'clsx';
 import CardContent from "@mui/material/CardContent";
+import {getLongMessage} from "../notice_helpers";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -22,6 +23,7 @@ export const Notice = React.memo(({notice}) => {
   const styles = useN03TextInfoContentStyles();
   const shadowStyles = useLightTopShadowStyles();
   const cardStyles = useStyles();
+  let message = getLongMessage(notification);
   return (
     <Card className={cx(cardStyles.root, shadowStyles.root)}>
       <BrandCardHeader
