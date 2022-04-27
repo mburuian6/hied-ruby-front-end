@@ -25,18 +25,19 @@ export const Notice = React.memo(({notice}) => {
   return (
     <Card className={cx(cardStyles.root, shadowStyles.root)}>
       <BrandCardHeader
-        image={
-          'https://pngimage.net/wp-content/uploads/2018/06/react-icon-png-7.png' //some image to go back
-        }
-        extra={'x minutes ago'}
+        // image={
+        //   'https://pngimage.net/wp-content/uploads/2018/06/react-icon-png-7.png' // TODO: some image to go back
+        // }
+        image = {<CancelOutlined onClick={goBack}/>}
+        extra={ moment(Date.parse(notification)).fromNow()}
       />
       <CardContent className={cardStyles.content}>
         <TextInfoContent
           classes={styles}
-          overline={'Some event'}
-          heading={'Header'}
+          overline={notification.type.split('_')}
+          heading={message.subject}
           body={
-            'Long message.'
+            message.message
           }
         />
       </CardContent>
