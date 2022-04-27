@@ -21,7 +21,6 @@ export const getLongMessage = (notification) => {
   return {subject:subject,message:message}
 }
 
-
 export const getShortMessage = (notification) => {
   const subject = getSubject(notification.type);
   let message = titleCase(getSubject(notification.type));
@@ -29,7 +28,7 @@ export const getShortMessage = (notification) => {
   return {subject:subject,message:message}
 }
 
-function titleCase(str) {
+const titleCase = (str) => {
   let upper = true;
   let newStr = "";
   for (let i = 0, l = str.length; i < l; i++) {
