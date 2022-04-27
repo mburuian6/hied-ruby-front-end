@@ -15,7 +15,7 @@ import {useNavigate} from "react-router-dom";
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [badgeContent, setBadgeContent] = React.useState(20);
+  const [badgeContent, setBadgeContent] = React.useState(0);
   const navigate = useNavigate();
 
   const handleMenu = (event) => {
