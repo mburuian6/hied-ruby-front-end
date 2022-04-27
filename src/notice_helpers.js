@@ -21,3 +21,11 @@ export const getLongMessage = (notification) => {
   return {subject:subject,message:message}
 }
 
+
+export const getShortMessage = (notification) => {
+  const subject = getSubject(notification.type);
+  let message = titleCase(getSubject(notification.type));
+
+  return {subject:subject,message:message}
+}
+
