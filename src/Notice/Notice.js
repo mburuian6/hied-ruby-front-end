@@ -25,6 +25,12 @@ export const Notice = React.memo(({notice}) => {
   const cardStyles = useStyles();
   let moment = require('moment');
   let message = getLongMessage(notification);
+
+  const goBack = () => {
+    history.goBack();
+    return undefined;
+  }
+
   return (
     <Card className={cx(cardStyles.root, shadowStyles.root)}>
       <BrandCardHeader
