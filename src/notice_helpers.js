@@ -1,3 +1,5 @@
+
+// TODO: Add user links
 export const getLongMessage = (notification) => {
   const subject = getSubject(notification.type);
   let message = '';
