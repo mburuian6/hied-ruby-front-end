@@ -23,6 +23,7 @@ export const Notice = React.memo(({notice}) => {
   const styles = useN03TextInfoContentStyles();
   const shadowStyles = useLightTopShadowStyles();
   const cardStyles = useStyles();
+  let moment = require('moment');
   let message = getLongMessage(notification);
   return (
     <Card className={cx(cardStyles.root, shadowStyles.root)}>
