@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const Notice = React.memo(({notice}) => {
+export const Notice = React.memo(({notification}) => {
   const styles = useN03TextInfoContentStyles();
   const shadowStyles = useLightTopShadowStyles();
   const cardStyles = useStyles();
