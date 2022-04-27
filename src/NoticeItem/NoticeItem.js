@@ -1,7 +1,9 @@
 import React from 'react';
 import {Avatar, Divider, ListItem, ListItemAvatar, ListItemText, Typography} from "@mui/material";
-const NoticeItem = ({ notification }) => {
 import {getShortMessage} from "../notice_helpers";
+
+const NoticeItem = React.memo(({ notification }) => {
+
   const username = notification.username;
   const type = notification.notification_type;
   const updatedAt = notification.updated_at;
@@ -36,6 +38,6 @@ import {getShortMessage} from "../notice_helpers";
     </>
   )
 
-}
+})
 export default NoticeItem;
 
