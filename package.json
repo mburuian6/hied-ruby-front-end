@@ -22,6 +22,7 @@
     "gulp-cli": "^2.3.0",
     "history": "^5.0.1",
     "idb": "^7.0.0",
+    "moment": "^2.29.3",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.1",
     "react-chat-elements": "^10.16.0",
