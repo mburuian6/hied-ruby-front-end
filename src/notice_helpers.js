@@ -44,3 +44,14 @@ function titleCase(str) {
   return newStr;
 }
 
+const getSubject = (type) => {
+  if (type === 'bid_accepted'){
+    return 'BID ACCEPTED'
+  } else if (type === 'bid_rejected'){
+    return 'BID REJECTED'
+  } else if (type === 'post_accepted_bid'){
+    return 'POST - BID ACCEPTED'
+  } else {
+    return 'JUST FYI'
+  }
+}
