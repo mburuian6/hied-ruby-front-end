@@ -1,15 +1,22 @@
 import React from 'react';
 import {Avatar, Divider, ListItem, ListItemAvatar, ListItemText, Typography} from "@mui/material";
 const NoticeItem = ({ notification }) => {
+import {getShortMessage} from "../notice_helpers";
+  const username = notification.username;
+  const type = notification.notification_type;
+  const updatedAt = notification.updated_at;
+  let message = getShortMessage(notification);
 
   return (
     <>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src='' />
+          <Avatar alt="User">
+            {username.charAt(0).toUpperCase()}
+          </Avatar>
         </ListItemAvatar>
         <ListItemText
-          primary="Some Subject"
+          primary= {message.subject}
           secondary={
             <React.Fragment>
               <Typography
@@ -18,9 +25,9 @@ const NoticeItem = ({ notification }) => {
                 variant="body2"
                 color="text.primary"
               >
-                Some Sender
+                {updatedAt}
               </Typography>
-              {" — Some ellipsised preview..."}
+              {message.message}
             </React.Fragment>
           }
         />
