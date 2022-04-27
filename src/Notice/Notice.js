@@ -7,6 +7,7 @@ import { useLightTopShadowStyles } from '@mui-treasury/styles/shadow/lightTop';
 import Card from "@mui/material/Card";
 import cx from 'clsx';
 import CardContent from "@mui/material/CardContent";
+import {CancelOutlined} from "@mui/icons-material";
 import {getLongMessage} from "../notice_helpers";
 
 const useStyles = makeStyles(() => ({
