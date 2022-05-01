@@ -19,8 +19,10 @@ export const isLoggedIn = () =>{
   return false;
 }
 
-export const timeFormat = startTime => {
-  return new Date(startTime).toLocaleDateString()
+export const timeFormat= time => {
+  return format(new Date(time),'Pp [zzzz]')
+}
+
 export const timeFormatHuman = time => {
   return formatDistanceToNow(new Date(time), {addSuffix:true})
 }
