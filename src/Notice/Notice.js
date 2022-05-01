@@ -9,6 +9,7 @@ import cx from 'clsx';
 import CardContent from "@mui/material/CardContent";
 import {CancelOutlined} from "@mui/icons-material";
 import {getLongMessage} from "../notice_helpers";
+import {timeFormatHuman} from "../helpers";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -26,6 +27,7 @@ export const Notice = React.memo(({notification}) => {
   const cardStyles = useStyles();
   let moment = require('moment');
   let message = getLongMessage(notification);
+  let formattedDate = timeFormatHuman(Date.parse(notification.updated_at))
 
   const goBack = () => {
     history.goBack();
@@ -38,8 +40,7 @@ export const Notice = React.memo(({notification}) => {
         // image={
         //   'https://pngimage.net/wp-content/uploads/2018/06/react-icon-png-7.png' // TODO: some image to go back
         // }
-        image = {<CancelOutlined onClick={goBack}/>}
-        extra={ moment(Date.parse(notification)).fromNow()}
+        extra={ formattedDate }
       />
       <CardContent className={cardStyles.content}>
         <TextInfoContent
