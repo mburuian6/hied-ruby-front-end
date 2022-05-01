@@ -8,7 +8,7 @@ export const getLongMessage = (notification) => {
 }
 
 export const getShortMessage = (notification) => {
-  const subject = getSubject(notification.type);
+  const subject = getSubject(notification.notification_type);
   let message = titleCase(getMessagePreview(notification.notification_type));
 
   return {subject:subject,message:message}
