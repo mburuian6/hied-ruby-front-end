@@ -1,14 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {makeStyles} from "@mui/styles";
 import BrandCardHeader from '@mui-treasury/components/cardHeader/brand';
-import TextInfoContent from 'npm install /content/textInfo';
 import { useN03TextInfoContentStyles } from '@mui-treasury/styles/textInfoContent/n03';
 import { useLightTopShadowStyles } from '@mui-treasury/styles/shadow/lightTop';
 import Card from "@mui/material/Card";
 import cx from 'clsx';
 import CardContent from "@mui/material/CardContent";
+import TextInfoContent from '@mui-treasury/components/content/textInfo';
 import {CancelOutlined} from "@mui/icons-material";
 import {getLongMessage} from "../notice_helpers";
+import {useLocation} from "react-router-dom";
 import {timeFormatHuman} from "../helpers";
 
 const useStyles = makeStyles(() => ({
