@@ -46,9 +46,9 @@ export const Notice = React.memo(({notification}) => {
         <TextInfoContent
           classes={styles}
           overline={notification.type.split('_')}
-          heading={message.subject}
+          heading={long_message.subject}
           body={
-            message.message
+            long_message.message
           }
         />
       </CardContent>
