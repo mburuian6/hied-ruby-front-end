@@ -29,13 +29,18 @@ const titleCase = (str) => {
   return newStr;
 }
 
-const getSubject = (type) => {
-  if (type === 'bid_accepted'){
+const getSubject = (notification_type) => {
+  if (notification_type === 'bid_accepted'){
     return 'BID ACCEPTED'
-  } else if (type === 'bid_rejected'){
+  } else if (notification_type === 'bid_rejected'){
     return 'BID REJECTED'
-  } else if (type === 'post_accepted_bid'){
-    return 'POST - BID ACCEPTED'
+  } else if (notification_type === 'post_accepted_bid'){
+    return 'POST CLOSED'
+  } else {
+    return 'JUST FYI'
+  }
+}
+
 const getMessagePreview = (notification_type) => {
   if (notification_type === 'bid_accepted'){
     return 'YOUR BID HAS BEEN ACCEPTED'
