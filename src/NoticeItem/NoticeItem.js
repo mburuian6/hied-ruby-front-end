@@ -6,7 +6,6 @@ import {timeFormat} from "../helpers";
 const NoticeItem = React.memo(({ notification }) => {
 
   const username = notification.username;
-  const type = notification.notification_type;
   const dateUpdated = new Date(notification.updated_at);
   let message = getShortMessage(notification);
 
