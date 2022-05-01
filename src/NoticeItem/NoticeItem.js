@@ -1,6 +1,7 @@
 import React from 'react';
 import {Avatar, Divider, ListItem, ListItemAvatar, ListItemText, Typography} from "@mui/material";
 import {getShortMessage} from "../notice_helpers";
+import { Link } from 'react-router-dom';
 import {timeFormat} from "../helpers";
 
 const NoticeItem = React.memo(({ notification }) => {
@@ -18,7 +19,8 @@ const NoticeItem = React.memo(({ notification }) => {
           </Avatar>
         </ListItemAvatar>
         <ListItemText
-          primary= {message.subject}
+          primary= {<Link to={'/notice'} state = {{ notification:notification }}>{message.subject}
+                    </Link> }
           secondary={
             <React.Fragment>
               <Typography
