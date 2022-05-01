@@ -23,9 +23,6 @@ const useStyles = makeStyles(() => ({
 }));
 
 export const Notice = React.memo(({someNullNotification}) => {
-  const styles = useN03TextInfoContentStyles();
-  const shadowStyles = useLightTopShadowStyles();
-  const cardStyles = useStyles();
   const location = useLocation();
 
   const [notification, setNotification] = useState(location.state.notification);
@@ -39,23 +36,29 @@ export const Notice = React.memo(({someNullNotification}) => {
   }
 
   return (
-    <Card className={cx(cardStyles.root, shadowStyles.root)}>
-      <BrandCardHeader
-        // image={
-        //   'https://pngimage.net/wp-content/uploads/2018/06/react-icon-png-7.png' // TODO: some image to go back
-        // }
-        extra={ formattedDate }
-      />
-      <CardContent className={cardStyles.content}>
-        <TextInfoContent
-          classes={styles}
-          overline={_type}
-          heading={long_message.subject}
-          body={
-            long_message.message
-          }
-        />
-      </CardContent>
+    <Card sx={{  }}>
+      <CardActionArea>
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {long_message.subject}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {long_message.message}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small">
+          #{_type}
+        </Button>
+        <Button size="small">
+          {formattedDate}
+        </Button>
+        {/*TODO: Go Back*/}
+        <Button size="small" color="primary" onClick={() => navigate(-1)}>
+          Back
+        </Button>
+      </CardActions>
     </Card>
   );
 });
