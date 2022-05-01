@@ -25,11 +25,7 @@ export const Notice = React.memo(({someNullNotification}) => {
   let long_message = getLongMessage(notification);
   let formattedDate = timeFormatHuman(Date.parse(notification.updated_at))
   let _type = notification.notification_type.split('_')
-
-  const goBack = () => {
-    history.goBack();
-    return undefined;
-  }
+  const navigate = useNavigate();
 
   return (
     <Card sx={{  }}>
