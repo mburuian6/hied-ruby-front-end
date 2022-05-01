@@ -25,7 +25,6 @@ export const Notice = React.memo(({someNullNotification}) => {
   const styles = useN03TextInfoContentStyles();
   const shadowStyles = useLightTopShadowStyles();
   const cardStyles = useStyles();
-  let moment = require('moment');
   let message = getLongMessage(notification);
   const location = useLocation();
 
