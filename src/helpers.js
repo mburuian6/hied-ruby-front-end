@@ -1,3 +1,5 @@
+import {format, formatDistanceToNow} from "date-fns";
+
 export const isPersistedState = stateName =>{
   return sessionStorage.getItem(stateName);
 }
@@ -19,6 +21,8 @@ export const isLoggedIn = () =>{
 
 export const timeFormat = startTime => {
   return new Date(startTime).toLocaleDateString()
+export const timeFormatHuman = time => {
+  return formatDistanceToNow(new Date(time), {addSuffix:true})
 }
 
 export const clearStorage = () => {
