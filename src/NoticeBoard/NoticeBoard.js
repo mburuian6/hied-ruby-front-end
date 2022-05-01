@@ -12,6 +12,7 @@ const NoticeBoard = (  ) => {
   const { username } = useParams();
   const [added, setAdded] = useState(false);
   const [notifications, setNotifications] = useState([]);
+  const navigate = useNavigate();
 
   useEffect (() => {
     getNotifications();
@@ -46,6 +47,17 @@ const NoticeBoard = (  ) => {
           <NoticeItem key={index} notification={notification} />
         ))}
       </List>
+      <Fab aria-label="refresh"
+           size={'small'}
+           href={`/notice-board/${username}`}
+           sx={{
+             position: 'absolute',
+             bottom: (theme) => theme.spacing(2),
+             right: (theme) => theme.spacing(2),
+           }}
+      >
+        <Refresh />
+      </Fab>
     </>
   )
 }
