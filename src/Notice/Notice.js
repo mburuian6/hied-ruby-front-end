@@ -21,12 +21,15 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const Notice = React.memo(({notification}) => {
+export const Notice = React.memo(({someNullNotification}) => {
   const styles = useN03TextInfoContentStyles();
   const shadowStyles = useLightTopShadowStyles();
   const cardStyles = useStyles();
   let moment = require('moment');
   let message = getLongMessage(notification);
+  const location = useLocation();
+
+  const [notification, setNotification] = useState(location.state.notification);
   let long_message = getLongMessage(notification);
   let formattedDate = timeFormatHuman(Date.parse(notification.updated_at))
   let _type = notification.notification_type.split('_')
