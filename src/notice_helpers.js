@@ -9,7 +9,7 @@ export const getLongMessage = (notification) => {
 
 export const getShortMessage = (notification) => {
   const subject = getSubject(notification.type);
-  let message = titleCase(getSubject(notification.type));
+  let message = titleCase(getMessagePreview(notification.notification_type));
 
   return {subject:subject,message:message}
 }
@@ -36,6 +36,13 @@ const getSubject = (type) => {
     return 'BID REJECTED'
   } else if (type === 'post_accepted_bid'){
     return 'POST - BID ACCEPTED'
+const getMessagePreview = (notification_type) => {
+  if (notification_type === 'bid_accepted'){
+    return 'YOUR BID HAS BEEN ACCEPTED'
+  } else if (notification_type === 'bid_rejected'){
+    return 'YOUR BID HAS BEEN  REJECTED'
+  } else if (notification_type === 'post_accepted_bid'){
+    return 'BID ACCEPTED AND YOUR POST IS NOW CLOSED'
   } else {
     return 'JUST FYI'
   }
