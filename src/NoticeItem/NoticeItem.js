@@ -1,12 +1,13 @@
 import React from 'react';
 import {Avatar, Divider, ListItem, ListItemAvatar, ListItemText, Typography} from "@mui/material";
 import {getShortMessage} from "../notice_helpers";
+import {timeFormat} from "../helpers";
 
 const NoticeItem = React.memo(({ notification }) => {
 
   const username = notification.username;
   const type = notification.notification_type;
-  const updatedAt = notification.updated_at;
+  const dateUpdated = new Date(notification.updated_at);
   let message = getShortMessage(notification);
 
   return (
@@ -27,7 +28,7 @@ const NoticeItem = React.memo(({ notification }) => {
                 variant="body2"
                 color="text.primary"
               >
-                {updatedAt}
+                {timeFormat(dateUpdated)} :
               </Typography>
               {message.message}
             </React.Fragment>
