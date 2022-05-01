@@ -27,7 +27,9 @@ export const Notice = React.memo(({notification}) => {
   const cardStyles = useStyles();
   let moment = require('moment');
   let message = getLongMessage(notification);
+  let long_message = getLongMessage(notification);
   let formattedDate = timeFormatHuman(Date.parse(notification.updated_at))
+  let _type = notification.notification_type.split('_')
 
   const goBack = () => {
     history.goBack();
@@ -45,7 +47,7 @@ export const Notice = React.memo(({notification}) => {
       <CardContent className={cardStyles.content}>
         <TextInfoContent
           classes={styles}
-          overline={notification.type.split('_')}
+          overline={_type}
           heading={long_message.subject}
           body={
             long_message.message
