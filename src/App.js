@@ -13,6 +13,7 @@ import Login from './Auth/Login';
 import JobForm from './JobForm/JobForm';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import Logout from './Auth/Logout';
+import Notice from "./Notice/Notice";
 
 // const axios = require('axios').default;
 
@@ -23,6 +24,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/notice-board/:username' element={<ProtectedRoute>< NoticeBoard /></ProtectedRoute>} />
+        <Route path='/notice' element={<ProtectedRoute>< Notice /></ProtectedRoute>} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
         <Route path='/logout' element={<Logout />} />
