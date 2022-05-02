@@ -9,7 +9,7 @@ import toast from "../FlashNotification/FlashNotification";
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import DateTimePicker from '@mui/lab/DateTimePicker';
-// import DateAdapter from '@mui/lab/AdapterMoment';
+import {isToday} from "date-fns";
 
 const JobForm = () => {
   const navigate = useNavigate();
@@ -31,6 +31,10 @@ const JobForm = () => {
     var username = persistedState("username");
     data.append("username", username);
 
+    if(!isToday(start)){
+      toast.error("Date must not be less than today");
+      return;
+    }
     data.set("start", start.toUTCString());
 
     var pay = data.get("pay");
