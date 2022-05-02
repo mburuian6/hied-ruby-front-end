@@ -21,6 +21,31 @@ const Profile = () => {
   useEffect(()=>{
     getProfile();
   },[]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setLoading(true);
+    var data = new FormData(event.target);
+    if(data.get('email') === email){
+      toast.info('Email unchanged');
+      return;
+    }
+
+    var username = persistedState("username");
+    data.append("username", username);
+
+    axios
+      .post(API_GET_USER_PATH, Object.fromEntries(data.entries()))
+      .then(() => {
+        toast.info('Saved successfully');
+        setLoading(false);
+      })
+      .catch((error) => {
+        toast.error('Failed to save.');
+        console.log(error.toJSON());
+      });
+  }
+
   return (
   );
 }
