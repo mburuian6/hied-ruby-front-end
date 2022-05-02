@@ -1,7 +1,5 @@
--
 - serviceworker - swtoolbox,swprecache lib -> workbox
 - Non static assets -> IndexDb
-- Responsive pages & images
 - Fail gracefully (navigator.online())
 - Cache static assets (workbox) 
 - appshell 
@@ -13,17 +11,12 @@
   - installation prompt
 - Push notifications
 - encrypt requestss & resources
-- payment
 - google analytics
------------
 - add to homescreen
-- push notifications
-- payment & credential mgmt
 ---------------
 
 - if user has bidded, attach to the top pf bids
 - form input constraints, bidform, jobform
 - capture 401 responses and go to login
-- silent refresh
 
 
