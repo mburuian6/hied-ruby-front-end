@@ -5,7 +5,7 @@ import {persistedState, timeFormatHuman} from "../helpers";
 import toast from '../FlashNotification/FlashNotification';
 import {Button, Divider, Grid, Stack, TextField} from "@mui/material";
 
-const Profile = () => {
+const MyProfile = () => {
   let [user, setUser] = useState();
   let [email, setEmail] = useState('');
   let [loading, setLoading] = useState(false);
@@ -99,4 +99,4 @@ const Profile = () => {
 
 }
 
-export default Profile;
+export default MyProfile;
