@@ -100,8 +100,6 @@ const JobForm = () => {
         </Grid>
         <Grid item xs={12} sm={4}>
           <TextField
-            error
-            helperText="Pay cannot be negative"
             id="pay"
             label="Pay"
             variant="filled"
