@@ -14,6 +14,8 @@ const API_POST_BIDS_PATH = '/bids/open_post_bids';
 const API_BIDS_PATH = '/bids';
 const API_ACCEPT_BID_PATH = '/bids/accept_bid';
 const API_ALL_NOTIFICATIONS= '/notifications/all_notifications';
+const API_GET_USER_PATH = '/users/profile';
+const API_UPDATE_USER_PATH = '/users/update_profile';
 
 const headers = new Headers();
 headers.append('Content-Type','application/json');
@@ -21,7 +23,7 @@ headers.append('Authorization',
   `Bearer ${isPersistedState('authenticationToken')}`);
 
 export {
-    BASE_URL, 
+    BASE_URL,
     API_HOME_URL,
     API_SIGN_UP_PATH,
     API_LOGIN_PATH,
@@ -30,5 +32,7 @@ export {
     API_BIDS_PATH,
     API_POST_BIDS_PATH,
     API_ACCEPT_BID_PATH,
-    API_ALL_NOTIFICATIONS
+    API_ALL_NOTIFICATIONS,
+    API_GET_USER_PATH,
+    API_UPDATE_USER_PATH
 }
