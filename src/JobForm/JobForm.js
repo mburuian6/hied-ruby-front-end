@@ -37,7 +37,7 @@ const JobForm = () => {
     }
     data.set("start", start.toUTCString());
 
-    var pay = data.get("pay");
+    let pay = data.get("pay");
     if (pay < 0) {
       toast.error("Pay must be equal to or greater than zero");
       return;
