@@ -17,8 +17,10 @@ const Profile = () => {
         username: username.toString()
       }
     }).then((response) => {
-      let response_item = response.data;
-      setUser(response_item["_embedded"]["user"]);
+      if(response.data !== undefined) {
+        setCreatedAt(response.data.created_at);
+        setEmail(response.data.email);
+      }
       setLoading(false);
     }).catch(()=>{
       toast.error('User profile unavailable.')
@@ -37,7 +39,7 @@ const Profile = () => {
             label="Username"
             variant="filled"
             type="text"
-            value={user.username}
+            value={username}
             disabled={true}
           />
         </Grid>
@@ -46,7 +48,7 @@ const Profile = () => {
             label="Joined"
             variant="filled"
             type="text"
-            value={timeFormatHuman(user.created_at)}
+            value={timeFormatHuman(createdAt)}
             disabled={true}
           />
         </Grid>
@@ -57,7 +59,7 @@ const Profile = () => {
             label="Email"
             variant="filled"
             type="text"
-            value={user.email}
+            value={email}
             disabled={true}
           />
         </Grid>
