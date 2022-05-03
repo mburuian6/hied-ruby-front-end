@@ -94,7 +94,7 @@ export default function JobItem( props ) {
           </Typography>
           <Typography>
             <i>
-                by: {props.job.username}
+                by: {<Link to={`/profile/${props.job.username}`}>{props.job.username}</Link>}
             </i>
           </Typography>
         </CardContent>
