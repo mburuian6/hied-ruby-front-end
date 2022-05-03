@@ -10,7 +10,7 @@ const Profile = () => {
   const [createdAt, setCreatedAt] = useState();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(true);
-  const username = useParams();
+  const {username} = useParams();
 
   let getProfile = () => {
     axios.get(API_GET_USER_PATH,{
