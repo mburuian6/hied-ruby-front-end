@@ -46,7 +46,6 @@ export const Notice = React.memo(({someNullNotification}) => {
         <Button size="small">
           {formattedDate}
         </Button>
-        {/*TODO: Go Back*/}
         <Button size="small" color="primary" onClick={() => navigate(-1)}>
           Back
         </Button>
