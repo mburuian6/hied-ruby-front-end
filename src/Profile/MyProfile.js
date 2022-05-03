@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {defaultInstance as axios} from "../axiosConfig";
-import {API_GET_USER_PATH} from "../config";
+import {API_GET_USER_PATH, API_UPDATE_USER_PATH} from "../config";
 import {persistedState, timeFormatHuman} from "../helpers";
 import toast from '../FlashNotification/FlashNotification';
 import {Button, Divider, Grid, Stack, TextField} from "@mui/material";
@@ -44,7 +44,7 @@ const MyProfile = () => {
     data.append("username", username);
 
     axios
-      .put(API_GET_USER_PATH, Object.fromEntries(data.entries()))
+      .put(API_UPDATE_USER_PATH, Object.fromEntries(data.entries()))
       .then(() => {
         toast.info('Saved successfully');
         setLoading(false);
