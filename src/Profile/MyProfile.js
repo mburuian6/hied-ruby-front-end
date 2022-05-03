@@ -45,7 +45,7 @@ const MyProfile = () => {
     data.append("username", username);
 
     axios
-      .post(API_GET_USER_PATH, Object.fromEntries(data.entries()))
+      .put(API_GET_USER_PATH, Object.fromEntries(data.entries()))
       .then(() => {
         toast.info('Saved successfully');
         setLoading(false);
