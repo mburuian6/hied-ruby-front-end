@@ -21,7 +21,6 @@ const MyProfile = () => {
         username: username.toString()
       }
     }).then((response) => {
-      console.log(response.data)
       if(response.data !== undefined) {
         setCreatedAt(response.data.created_at);
         setEmail(response.data.email);
