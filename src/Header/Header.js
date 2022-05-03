@@ -11,7 +11,7 @@ import {clearStorage, isLoggedIn, persistedState} from "../helpers";
 import IconButton from "@mui/material/IconButton";
 import Menu from '@mui/material/Menu';
 import MailIcon from '@mui/icons-material/Mail';
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -33,6 +33,11 @@ const Header = () => {
 
   const handleGoToNotifications = () => {
     navigate(`/notice-board/${persistedState("username")}`)
+  }
+
+  const handleProfile = () => {
+    setAnchorEl(null);
+    navigate('/my-profile');
   }
 
   const HasLoggedIn = () => {
@@ -80,7 +85,7 @@ const Header = () => {
           >
             <MenuItem>{persistedState("username")}</MenuItem>
             <Divider/>
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleProfile}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>My account</MenuItem>
             <MenuItem onClick={handleLogout}>Logout</MenuItem>
           </Menu>
