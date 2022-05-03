@@ -49,7 +49,7 @@ const Profile = () => {
             label="Joined"
             variant="filled"
             type="text"
-            value={timeFormatHuman(createdAt)}
+            value={createdAt? timeFormatHuman(createdAt): ''}
             disabled={true}
           />
         </Grid>
