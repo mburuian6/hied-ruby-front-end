@@ -8,14 +8,14 @@ import {Button, Divider, Grid, Stack, TextField} from "@mui/material";
 const MyProfile = () => {
   let [user, setUser] = useState();
   let [email, setEmail] = useState('');
-  let [loading, setLoading] = useState(false);
-  let username = persistedState('username');
+  const [loading, setLoading] = useState(false);
+  const username = persistedState('username');
 
-  let getProfile = () => {
   useEffect(()=>{
     getProfile();
   },[]);
 
+  const getProfile = () => {
     axios.get(API_GET_USER_PATH,{
       params: {
         username: username.toString()
