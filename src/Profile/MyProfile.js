@@ -6,8 +6,8 @@ import toast from '../FlashNotification/FlashNotification';
 import {Button, Divider, Grid, Stack, TextField} from "@mui/material";
 
 const MyProfile = () => {
-  let [user, setUser] = useState();
-  let [email, setEmail] = useState('');
+  const [createdAt, setCreatedAt] = useState();
+  const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const username = persistedState('username');
 
@@ -21,10 +21,13 @@ const MyProfile = () => {
         username: username.toString()
       }
     }).then((response) => {
-      let response_items = response.data;
-      setUser(response_items["_embedded"]["user"]);
-      setEmail(response_items._embedded.user.email);
-    }).catch(()=>{
+      console.log(response.data)
+      if(response.data !== undefined) {
+        setCreatedAt(response.data.created_at);
+        setEmail(response.data.email);
+      }
+    }).catch((error)=>{
+      console.log(error);
       toast.error('User profile unavailable.')
     })
   };
@@ -61,7 +64,7 @@ const MyProfile = () => {
             label="Username"
             variant="filled"
             type="text"
-            value={user.username}
+            value={username}
             disabled={true}
           />
         </Grid>
@@ -70,7 +73,7 @@ const MyProfile = () => {
             label="Joined"
             variant="filled"
             type="text"
-            value={timeFormatHuman(user.created_at)}
+            value={createdAt? timeFormatHuman(createdAt): ''}
             disabled={true}
           />
         </Grid>
