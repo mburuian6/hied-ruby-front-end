@@ -50,7 +50,7 @@ const MyProfile = () => {
         setLoading(false);
       })
       .catch((error) => {
-        toast.error('Failed to save.');
+        toast.error('Failed to save. Email already used in another profile');
         console.log(error.toJSON());
       });
   }
