@@ -12,6 +12,10 @@ const MyProfile = () => {
   let username = persistedState('username');
 
   let getProfile = () => {
+  useEffect(()=>{
+    getProfile();
+  },[]);
+
     axios.get(API_GET_USER_PATH,{
       params: {
         username: username.toString()
@@ -24,10 +28,6 @@ const MyProfile = () => {
       toast.error('User profile unavailable.')
     })
   };
-
-  useEffect(()=>{
-    getProfile();
-  },[]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
