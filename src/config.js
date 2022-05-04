@@ -16,6 +16,7 @@ const API_ACCEPT_BID_PATH = '/bids/accept_bid';
 const API_ALL_NOTIFICATIONS= '/notifications/all_notifications';
 const API_GET_USER_PATH = '/users/profile';
 const API_UPDATE_USER_PATH = '/users/update_profile';
+const API_STATS_USER_PATH = '/users/user_statistics';
 
 const headers = new Headers();
 headers.append('Content-Type','application/json');
