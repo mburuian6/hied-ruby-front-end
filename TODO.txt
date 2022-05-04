@@ -16,7 +16,20 @@
 ---------------
 
 - if user has bidded, attach to the top pf bids
-- form input constraints, bidform, jobform
+- form input constraints,
+  - bidform,
+  - jobform
+  - email => server side constraints
 - capture 401 responses and go to login
+- logout revoke token
+- cancancan
+    - delete fns for post & bid
+    - owners should not bid for their own bids
+- reset password
+
+PROFILE:
+8. Add contact phone?
+9. Hide contact phone option?
+8. Charts?
 
 
