@@ -8,7 +8,7 @@ const JobStat = ({ job }) => {
     <>
       <ListItem alignItems="flex-start">
         <ListItemText
-          primary={`${job.title} - ${job.pay}`}
+          primary={`${job.title} - Kes ${job.pay}`}
           secondary={
             <React.Fragment>
               <Typography
