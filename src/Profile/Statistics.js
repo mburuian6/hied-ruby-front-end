@@ -36,7 +36,7 @@ const Statistics = ({ username }) => {
       }
     }).catch((error)=>{
       console.log(error);
-      toast.error('User profile unavailable.')
+      toast.error('Error getting stats.')
     })
   };
 
