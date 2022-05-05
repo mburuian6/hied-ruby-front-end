@@ -29,10 +29,10 @@ const Statistics = ({ username }) => {
         username: username.toString()
       }
     }).then((response) => {
-      if(response.data !== undefined) {
-        setJobs(response.data.posts);
-        setAcceptedBids(response.data.accepted_bids);
-        setRejectedBids(response.data.rejectedBids)
+      if(response.data.statistics !== undefined) {
+        setJobs(response.data.statistics.posts);
+        setAcceptedBids(response.data.statistics.accepted_bids);
+        setRejectedBids(response.data.statistics.rejected_bids)
       }
     }).catch((error)=>{
       console.log(error);
