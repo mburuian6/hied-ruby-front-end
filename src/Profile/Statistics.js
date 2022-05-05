@@ -24,7 +24,7 @@ const Statistics = ({ username }) => {
   },[]);
 
   const getStatistics = () => {
-    axios.get(API_GET_USER_PATH,{
+    axios.get(API_STATS_USER_PATH,{
       params: {
         username: username.toString()
       }
