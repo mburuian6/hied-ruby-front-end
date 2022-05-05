@@ -4,6 +4,7 @@ import {API_GET_USER_PATH, API_UPDATE_USER_PATH} from "../config";
 import {persistedState, timeFormatHuman} from "../helpers";
 import toast from '../FlashNotification/FlashNotification';
 import {Button, Divider, Grid, Stack, TextField} from "@mui/material";
+import Statistics from "./Statistics";
 
 const MyProfile = () => {
   const [createdAt, setCreatedAt] = useState();
@@ -56,6 +57,7 @@ const MyProfile = () => {
   }
 
   return (
+    <Stack>
     <form onSubmit={handleSubmit} id="user_profile_form" autoComplete="off">
       <Stack spacing={3}>
         <Grid item xs={12} sm={4}>
@@ -97,6 +99,8 @@ const MyProfile = () => {
         </Grid>
       </Stack>
     </form>
+      <Statistics username={username}/>
+    </Stack>
   );
 
 }
