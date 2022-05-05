@@ -19,8 +19,12 @@ const JobStat = ({ job }) => {
               >
                Created: {timeFormatHuman(job.created_at)}
               </Typography>
-              Start: {timeFormat(job.start)} :-
-              {job.description}
+              <Typography variant="caption" display="block">
+                [Start: {timeFormat(job.start)}]
+              </Typography>
+              <Typography>
+                {job.description}
+              </Typography>
             </React.Fragment>
           }
         />
