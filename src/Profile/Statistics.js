@@ -67,7 +67,7 @@ const Statistics = ({ username }) => {
     }
     return (acceptedBids.map((acceptedBid,index) => (
       <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-        <AcceptedBidStat key={index} acceptedBid={acceptedBid} />
+        <AcceptedBidStat key={index} bid={acceptedBid} />
       </List>
     )))
   };
@@ -78,7 +78,7 @@ const Statistics = ({ username }) => {
     }
     return (rejectedBids.map((rejectedBid,index) => (
       <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-        <RejectedBidStat key={index} rejectedBid={rejectedBid} />
+        <RejectedBidStat key={index} bid={rejectedBid} />
       </List>
     )))
   };
