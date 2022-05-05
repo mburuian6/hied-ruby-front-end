@@ -19,7 +19,9 @@ const AcceptedBidStat = ({bid}) => {
               >
                 Created: {timeFormatHuman(bid.created_at)}
               </Typography>
-              Pay: {bid.pay}
+              <Typography>
+                Pay: {bid.pay}
+              </Typography>
             </React.Fragment>
           }
         />
