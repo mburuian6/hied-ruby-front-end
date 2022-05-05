@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {defaultInstance as axios} from "../axiosConfig";
-import {API_GET_USER_PATH} from "../config";
+import {API_STATS_USER_PATH} from "../config";
 import toast from "../FlashNotification/FlashNotification";
-import {Tabs, Box, Tab, Skeleton, Stack, List} from "@mui/material";
+import {Tabs, Box, Tab, Skeleton, Stack, List, Typography} from "@mui/material";
 import {TabPanel} from "@mui/lab";
 import JobStat from "./Statistics/JobStat";
 import AcceptedBidStat from "./Statistics/AcceptedBidStat";
 import RejectedBidStat from "./Statistics/RejectedBidStat";
+import PropTypes from "prop-types";
 
 
 const Statistics = ({ username }) => {
