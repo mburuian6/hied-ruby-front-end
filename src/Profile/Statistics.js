@@ -42,11 +42,11 @@ const Statistics = ({ username }) => {
 
   const SkeletonStructure = () => {
     return (
-      <Stack>
-        <Skeleton />;
-        <Skeleton />;
-        <Skeleton />;
-      </Stack>
+      <>
+        <Skeleton />
+        <Skeleton />
+        <Skeleton />
+      </>
     )
   }
 
