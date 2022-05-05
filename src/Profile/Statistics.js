@@ -50,8 +50,8 @@ const Statistics = ({ username }) => {
     )
   }
 
-  const JobStats = ({}) => {
     if (jobs) {
+  const JobStats = () => {
        return (<SkeletonStructure />);
     }
     return (jobs.map((job,index) => (
@@ -61,8 +61,8 @@ const Statistics = ({ username }) => {
     )))
   };
 
-  const AcceptedBidStats = ({}) => {
     if (jobs) {
+  const AcceptedBidStats = () => {
       return (<SkeletonStructure />);
     }
     return (acceptedBids.map((acceptedBid,index) => (
@@ -72,8 +72,8 @@ const Statistics = ({ username }) => {
     )))
   };
 
-  const RejectedBidStats = ({}) => {
     if (jobs) {
+  const RejectedBidStats = () => {
       return (<SkeletonStructure />);
     }
     return (rejectedBids.map((rejectedBid,index) => (
