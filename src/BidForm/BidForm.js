@@ -60,23 +60,24 @@ const BidForm = ({ addBid, postHashId }) => {
 
     return(
         <form onSubmit={e => {handleSubmit(e)}}>
-          
-          <TextField id="pay" label="Proposed Pay" min="0"
-            variant="outlined" type="number" value={pay}
-            name="pay" onChange={e => {
-              setPay(e.target.value)
-            }} required
-          /> <br />
+          <Stack>
+            <TextField id="pay" label="Proposed Pay" min="0"
+              variant="outlined" type="number" value={pay}
+              name="pay" onChange={e => {
+                setPay(e.target.value)
+              }} required
+            /> <br />
 
-          <TextField id="notes" label="Any Notes?" multiline
-           variant="outlined" type="text" value={notes} 
-           placeholder="Any additional info..." name="notes" 
-           onChange={e => setNotes(e.target.value)} maxLength='255'/><br />
+            <TextField id="notes" label="Any Notes?" multiline
+             variant="filled" type="text" value={notes}
+             placeholder="Any additional info..." name="notes"
+             onChange={e => setNotes(e.target.value)} maxLength='255'/><br />
 
-          <Button variant="contained"
-            color="primary" type="submit">
-            Submit Bid
-          </Button>
+            <Button variant="contained"
+              color="primary" type="submit">
+              Submit Bid
+            </Button>
+          </Stack>
         </form>
     )
 
