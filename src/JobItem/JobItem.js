@@ -16,6 +16,13 @@ export default function JobItem({ job }) {
         //
         //         by: {<Link to={}></Link>}
 
+  const NoMoreInfo = () => {
+    return (
+      <Typography variant={"caption"} color={"text.secondary"} >
+        No more info right now.
+      </Typography>
+    )
+  }
 
     <Card>
       <CardContent>
@@ -29,7 +36,7 @@ export default function JobItem({ job }) {
           {timeFormatWithTimeZone(job.start)}
         </Typography>
         <Typography variant="body2">
-          {job.description? job.description.substring(0, 31) : 'No more info right now.'}
+          {job.description? job.description.substring(0, 31) : <NoMoreInfo/>}
         </Typography>
       </CardContent>
       <CardActions>
