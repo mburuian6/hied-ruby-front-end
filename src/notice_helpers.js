@@ -15,7 +15,7 @@ export const getShortMessage = (notification) => {
   return {subject:subject,message:message}
 }
 
-const titleCase = (str) => {
+export const titleCase = (str) => {
   let upper = true;
   let newStr = "";
   for (let i = 0, l = str.length; i < l; i++) {
