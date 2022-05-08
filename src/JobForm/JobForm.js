@@ -30,11 +30,6 @@ const JobForm = () => {
 
     var username = persistedState("username");
     data.append("username", username);
-
-    if(!isToday(start)){
-      toast.error("Date must not be less than today");
-      return;
-    }
     data.set("start", start.toUTCString());
 
     let pay = data.get("pay");
@@ -120,6 +115,7 @@ const JobForm = () => {
               value={start}
               name="start"
               onChange={handleStartChange}
+              disablePast={true}
               renderInput={(params) => <TextField {...params} />}
             />
           </LocalizationProvider>
