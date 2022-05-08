@@ -20,16 +20,21 @@
   - bidform,
   - jobform
   - email => server side constraints
+  -SERVER SIDE CONSTRAINTS
 - capture 401 responses and go to login
 - logout revoke token
 - cancancan
     - delete fns for post & bid
     - owners should not bid for their own bids
 - reset password
+- jobview issue
 
 PROFILE:
 8. Add contact phone?
 9. Hide contact phone option?
 8. Charts?
-
+00000000000000000000000000000000000000000000000000000000000000000000000
+Search - chip
+Payment
+Completed job
 
