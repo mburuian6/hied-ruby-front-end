@@ -2,7 +2,7 @@ import React from 'react';
 import {Avatar, Divider, ListItem, ListItemAvatar, ListItemText, Typography} from "@mui/material";
 import {getShortMessage} from "../notice_helpers";
 import { Link } from 'react-router-dom';
-import {timeFormat} from "../helpers";
+import {timeFormatWithTimeZone} from "../helpers";
 
 const NoticeItem = React.memo(({ notification }) => {
 
@@ -29,7 +29,7 @@ const NoticeItem = React.memo(({ notification }) => {
                 variant="body2"
                 color="text.primary"
               >
-                {timeFormat(dateUpdated)} :
+                {timeFormatWithTimeZone(dateUpdated)} :
               </Typography>
               {message.message}
             </React.Fragment>

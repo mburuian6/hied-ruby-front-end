@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router';
 import BreadCrumb from '../BreadCrumb/BreadCrumb';
-import { timeFormat } from '../helpers';
+import { timeFormatWithTimeZone } from '../helpers';
 import { Typography } from '@mui/material';
 import BidList from '../BidList/BidList';
 

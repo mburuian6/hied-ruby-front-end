@@ -1,6 +1,6 @@
 import {Divider, ListItem, ListItemText, Typography} from "@mui/material";
 import React from "react";
-import {timeFormat, timeFormatHuman} from "../../helpers";
+import {timeFormatWithTimeZone, timeFormatHuman} from "../../helpers";
 
 const AcceptedBidStat = ({bid}) => {
 

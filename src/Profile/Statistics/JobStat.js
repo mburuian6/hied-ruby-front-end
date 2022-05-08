@@ -1,6 +1,6 @@
 import {Divider, ListItem, ListItemText, Typography} from "@mui/material";
 import React from "react";
-import {timeFormat, timeFormatHuman} from "../../helpers";
+import {timeFormatWithTimeZone, timeFormatHuman} from "../../helpers";
 
 const JobStat = ({ job }) => {
 
@@ -20,7 +20,7 @@ const JobStat = ({ job }) => {
                Created: {timeFormatHuman(job.created_at)}
               </Typography>
               <Typography variant="caption" display="block">
-                [Start: {timeFormat(job.start)}]
+                [Start: {timeFormatWithTimeZone(job.start)}]
               </Typography>
               <Typography>
                 {job.description}

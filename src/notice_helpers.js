@@ -1,6 +1,6 @@
 
 // TODO: Add user links
-import {timeFormat} from "./helpers";
+import {timeFormatWithTimeZone} from "./helpers";
 
 export const getLongMessage = (notification) => {
   const subject = getSubject(notification.notification_type);
@@ -55,7 +55,7 @@ const getMessagePreview = (notification_type) => {
 }
 
 const constructLongMessage = (notification) => {
-  let formatted_time = timeFormat(notification.data.time)
+  let formatted_time = timeFormatWithTimeZone(notification.data.time)
   if(notification.notification_type === 'bid_accepted'){
     return `Dear ${notification.username}, your bid for post ${notification.data.post} 
       (${notification.data.post_link}) has been accepted at ${formatted_time}. Please contact the 

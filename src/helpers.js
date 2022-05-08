@@ -19,7 +19,7 @@ export const isLoggedIn = () =>{
   return false;
 }
 
-export const timeFormat= time => {
+export const timeFormatWithTimeZone= time => {
   return format(new Date(time),'Pp [zzzz]')
 }
 
