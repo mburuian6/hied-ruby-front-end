@@ -3,13 +3,14 @@ import {defaultInstance as axios} from "../axiosConfig";
 import {API_GET_USER_PATH, API_UPDATE_USER_PATH} from "../config";
 import {persistedState, timeFormatHuman} from "../helpers";
 import toast from '../FlashNotification/FlashNotification';
-import {Button, Divider, Grid, Stack, TextField} from "@mui/material";
+import {Button, Divider, Grid, Stack, TextField, Typography} from "@mui/material";
 import Statistics from "./Statistics";
+import {titleCase} from "../notice_helpers";
 
 const MyProfile = () => {
   const [createdAt, setCreatedAt] = useState();
   const [email, setEmail] = useState('');
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const username = persistedState('username');
 
   useEffect(()=>{
@@ -34,12 +35,8 @@ const MyProfile = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setLoading(true);
+    // setLoading(true);
     var data = new FormData(event.target);
-    if(data.get('email') === email){
-      toast.info('Email unchanged');
-      return;
-    }
 
     var username = persistedState("username");
     data.append("username", username);
@@ -48,7 +45,7 @@ const MyProfile = () => {
       .put(API_UPDATE_USER_PATH, Object.fromEntries(data.entries()))
       .then(() => {
         toast.info('Saved successfully');
-        setLoading(false);
+        // setLoading(false);
       })
       .catch((error) => {
         toast.error('Failed to save. Email already used in another profile');
@@ -58,28 +55,12 @@ const MyProfile = () => {
 
   return (
     <Stack>
-    <form onSubmit={handleSubmit} id="user_profile_form" autoComplete="off">
-      <Stack spacing={3}>
-        <Grid item xs={12} sm={4}>
-          <TextField
-            label="Username"
-            variant="filled"
-            type="text"
-            value={username}
-            disabled={true}
-          />
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <TextField
-            label="Joined"
-            variant="filled"
-            type="text"
-            value={createdAt? timeFormatHuman(createdAt): ''}
-            disabled={true}
-          />
-        </Grid>
-        <Divider/>
-        <h2>Contact</h2>
+      <Typography variant="h3" >{titleCase(username)}</Typography>
+      <Typography variant={"subtitle1"} color={'text.secondary'}>Joined {createdAt? timeFormatHuman(createdAt):'unaivailable'}</Typography>
+      <Divider/>
+      <Typography variant={'h5'}>Contact</Typography>
+      <form onSubmit={handleSubmit} id="user_profile_form" autoComplete="off">
+        <Stack spacing={3}>
         <Grid item xs={12} sm={4}>
           <TextField
             id="email"
@@ -88,17 +69,19 @@ const MyProfile = () => {
             type="text"
             value={email}
             name="email"
-            onChange={(event)=>{setEmail(event.target.value)}}
+            onChange={(event) => {
+              setEmail(event.target.value)
+            }}
             required
           />
         </Grid>
         <Grid item xs={12} sm={12}>
-          <Button variant="contained" color="primary" type="submit" disabled={loading}>
+          <Button variant="contained" color="primary" type="submit" disabled={false}>
             {" "}Update Profile{" "}
           </Button>
         </Grid>
-      </Stack>
-    </form>
+        </Stack>
+      </form>
       <Statistics username={username}/>
     </Stack>
   );

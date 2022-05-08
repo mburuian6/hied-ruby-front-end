@@ -3,8 +3,9 @@ import {defaultInstance as axios} from "../axiosConfig";
 import {API_GET_USER_PATH} from "../config";
 import {persistedState, timeFormatHuman} from "../helpers";
 import toast from '../FlashNotification/FlashNotification';
-import {Button, Divider, Grid, Stack, TextField} from "@mui/material";
+import {Button, Divider, Grid, Stack, TextField, Typography} from "@mui/material";
 import {useParams} from "react-router-dom";
+import {titleCase} from "../notice_helpers";
 
 const Profile = () => {
   const [createdAt, setCreatedAt] = useState();
@@ -33,28 +34,16 @@ const Profile = () => {
   },[]);
 
   return (
-    <form onSubmit={()=>{}} id="user_profile_form" autoComplete="off">
-      <Stack spacing={3}>
-        <Grid item xs={12} sm={4}>
-          <TextField
-            label="Username"
-            variant="filled"
-            type="text"
-            value={username}
-            disabled={true}
-          />
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <TextField
-            label="Joined"
-            variant="filled"
-            type="text"
-            value={createdAt? timeFormatHuman(createdAt): ''}
-            disabled={true}
-          />
-        </Grid>
-        <Divider/>
-        <h2>Contact</h2>
+    <Stack >
+      <Typography variant="h3" color={'text.secondary'} >{titleCase(username)}</Typography>
+      <Typography variant={"subtitle1"} color={'text.secondary'}>
+        Joined {createdAt? timeFormatHuman(createdAt):'unaivailable'}
+      </Typography>
+      <Divider/>
+      <Typography variant={'h5'}>Contact</Typography>
+      <form onSubmit={() => {
+      }} id="user_profile_form" autoComplete="off">
+
         <Grid item xs={12} sm={4}>
           <TextField
             label="Email"
@@ -64,8 +53,9 @@ const Profile = () => {
             disabled={true}
           />
         </Grid>
-      </Stack>
-    </form>
+
+      </form>
+    </Stack>
   );
 
 }
