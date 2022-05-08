@@ -23,6 +23,10 @@ export const timeFormatWithTimeZone= time => {
   return format(new Date(time),'Pp [zzzz]')
 }
 
+export const timeFormat= time => {
+  return format(new Date(time),'Pp ')
+}
+
 export const timeFormatHuman = time => {
   return formatDistanceToNow(new Date(time), {addSuffix:true})
 }
