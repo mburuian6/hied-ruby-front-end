@@ -1,20 +1,13 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import {timeFormatWithTimeZone, timeFormatHuman} from "../helpers";
+import {timeFormatHuman, timeFormat} from "../helpers";
 import {Link} from "react-router-dom";
-import {Button} from "@mui/material";
+import {Button, CardHeader} from "@mui/material";
 import CardActions from "@mui/material/CardActions";
 
 export default function JobItem({ job }) {
-  return (
-
-
-        //
-        //         by: {<Link to={}></Link>}
 
   const NoMoreInfo = () => {
     return (
@@ -24,6 +17,7 @@ export default function JobItem({ job }) {
     )
   }
 
+  return (
     <Card>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -33,7 +27,7 @@ export default function JobItem({ job }) {
           <Link to = { '/jobview' } state = {{ job: job }}>{job.title}</Link>
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {timeFormatWithTimeZone(job.start)}
+          Start: {timeFormat(job.start)}
         </Typography>
         <Typography variant="body2">
           {job.description? job.description.substring(0, 31) : <NoMoreInfo/>}
