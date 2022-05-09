@@ -1,4 +1,4 @@
-import { API_JOBS_URL, BASE_URL } from "./config";
+import { API_JOBS_URL, BASE_URL } from "./paths-config";
 
 
 const defaultConfig = {

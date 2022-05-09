@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BASE_URL } from './config';
+import { BASE_URL } from './paths-config';
 import { persistedState, persistState } from './helpers';
 
 //DEFAULT

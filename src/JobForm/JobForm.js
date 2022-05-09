@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Divider, Grid, Stack, TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { API_JOBS_PATH } from "../config";
+import { API_JOBS_PATH } from "../paths-config";
 import {persistedState} from "../helpers";
 import { defaultInstance as axios } from "../axiosConfig";
 import toast from "../FlashNotification/FlashNotification";

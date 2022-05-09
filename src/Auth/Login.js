@@ -4,7 +4,7 @@ import { createTheme,ThemeProvider } from '@mui/material/styles';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Box } from '@mui/system';
 import { Link } from 'react-router-dom';
-import { API_LOGIN_PATH } from '../config';
+import { API_LOGIN_PATH } from '../paths-config';
 import  { useNavigate, useLocation } from 'react-router-dom';
 import validator from 'validator';
 import toast from '../FlashNotification/FlashNotification';

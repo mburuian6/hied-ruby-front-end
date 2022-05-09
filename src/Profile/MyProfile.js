@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {defaultInstance as axios} from "../axiosConfig";
-import {API_GET_USER_PATH, API_UPDATE_USER_PATH} from "../config";
+import {API_GET_USER_PATH, API_UPDATE_USER_PATH} from "../paths-config";
 import {persistedState, timeFormatHuman} from "../helpers";
 import toast from '../FlashNotification/FlashNotification';
 import {Button, Divider, Grid, Stack, TextField, Typography} from "@mui/material";

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Snackbar } from '@mui/material';
-import { API_BIDS_PATH } from "../config";
+import {Snackbar, Stack} from '@mui/material';
+import { API_BIDS_PATH } from "../paths-config";
 import { Button, TextField } from "@mui/material";
 import { defaultInstance as axios } from "../axiosConfig";
 import {isPersistedState, persistedState} from "../helpers";

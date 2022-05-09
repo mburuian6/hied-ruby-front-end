@@ -4,7 +4,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import React from 'react';
 import { Box } from '@mui/system';
 import { Link } from 'react-router-dom';
-import { API_SIGN_UP_PATH } from '../config';
+import { API_SIGN_UP_PATH } from '../paths-config';
 import { authInstance as axios} from '../axiosConfig';
 import  { useNavigate } from 'react-router-dom';
 import validator from 'validator';

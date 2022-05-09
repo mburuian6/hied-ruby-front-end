@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {defaultInstance as axios} from "../axiosConfig";
-import {API_STATS_USER_PATH} from "../config";
+import {API_STATS_USER_PATH} from "../paths-config";
 import toast from "../FlashNotification/FlashNotification";
 import {Tabs, Box, Tab, Skeleton, Stack, List, Typography} from "@mui/material";
 import {TabPanel} from "@mui/lab";

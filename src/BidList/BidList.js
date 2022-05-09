@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import BidItem from '../BidItem/BidItem';
-import { API_POST_BIDS_PATH, API_ACCEPT_BID_PATH } from "../config";
+import { API_POST_BIDS_PATH, API_ACCEPT_BID_PATH } from "../paths-config";
 import BidForm from '../BidForm/BidForm';
 import { defaultInstance as axios} from '../axiosConfig';
 import toast from '../FlashNotification/FlashNotification';
