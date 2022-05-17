@@ -1,22 +1,11 @@
-- serviceworker - swtoolbox,swprecache lib -> workbox
-- Non static assets -> IndexDb
-- Fail gracefully (navigator.online())
-- Cache static assets (workbox) 
-- appshell 
-  (SSR both shell + 
-  content for entry page) + 
-  use JavaScript to fetch content for any further routes 
-  and do a "take over"
-  - manifest file and precache appshell
-  - installation prompt
+- serviceworker & Cache static assets (workbox) 1
+- Fail gracefully if serviceworker cache empty(navigator.online()) 2
 - Push notifications
-- encrypt requestss & resources
-- google analytics
+- encrypt requests & resources
 - add to homescreen
 ---------------
-
-- if user has bidded, attach to the top pf bids
-- form input constraints,
+- if user has bidded, attach to the top of bids
+- form input constraints, 5
   - bidform,
   - jobform
   - email => server side constraints
@@ -28,13 +17,21 @@
     - owners should not bid for their own bids
 - reset password
 - jobview issue
-
-PROFILE:
-8. Add contact phone?
-9. Hide contact phone option?
-8. Charts?
+- post location(virtual, physical->enter gmaps pin) & pictures 3
+- mark notification as read 4
+- Add contact phone?; Hide contact phone option? Send contact?
 00000000000000000000000000000000000000000000000000000000000000000000000
-Search - chip
-Payment
-Completed job
+- Search - chip(ui), like x(db)
+- Payment
+- Completed job
+- appshell
+  (SSR both shell +
+  content for entry page) +
+  use JavaScript to fetch content for any further routes
+  and do a "take over"
+  - manifest file and precache appshell
+  - installation prompt
+- google analytics
+- Non static assets -> IndexDb
+
 
