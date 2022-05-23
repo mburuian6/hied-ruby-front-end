@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   AppBar, Avatar, Badge,
   Box,
@@ -14,8 +14,8 @@ import MailIcon from '@mui/icons-material/Mail';
 import {Link, useNavigate} from "react-router-dom";
 
 const Header = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [badgeContent, setBadgeContent] = React.useState(0);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [badgeContent, setBadgeContent] = useState(0);
   const navigate = useNavigate();
 
   const handleMenu = (event) => {
