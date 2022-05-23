@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {makeStyles} from "@mui/styles";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -7,6 +7,9 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {timeFormatHuman} from "../helpers";
 import {Button, CardActionArea, Typography} from "@mui/material";
 import CardActions from "@mui/material/CardActions";
+import {defaultInstance as axios} from "../axiosConfig";
+import {API_MARK_READ_PATH} from "../paths-config";
+import toast from "../FlashNotification/FlashNotification";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -26,6 +29,25 @@ export const Notice = React.memo(({someNullNotification}) => {
   let formattedDate = timeFormatHuman(Date.parse(notification.updated_at))
   let _type = notification.notification_type.split('_')
   const navigate = useNavigate();
+
+  useEffect(() => {
+    markOpened();
+  }, []);
+
+  const markOpened = async () => {
+    await axios
+      .put(API_MARK_READ_PATH,
+        {
+          hash_id: notification.hash_id
+        })
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((error) => {
+        toast.error('Error processing notification')
+        console.log(error.toJSON());
+      });
+  }
 
   return (
     <Card sx={{  }}>
