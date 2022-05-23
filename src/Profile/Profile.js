@@ -34,7 +34,7 @@ const Profile = () => {
   },[]);
 
   return (
-    <Stack >
+    <Stack>
       <Typography variant="h3" color={'text.secondary'} >{titleCase(username)}</Typography>
       <Typography variant={"subtitle1"} color={'text.secondary'}>
         Joined {createdAt? timeFormatHuman(createdAt):'unaivailable'}
