@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import JobItem from '../JobItem/JobItem';
-import { Grid, Button } from '@mui/material';
-import { API_JOBS_PATH } from '../paths-config';
-import { defaultInstance as axios} from '../axiosConfig';
+import {Grid, Button, Fab} from '@mui/material';
+import {API_JOBS_PATH} from '../paths-config';
+import {defaultInstance as axios} from '../axiosConfig';
 import toast from '../FlashNotification/FlashNotification';
+import {Add} from "@mui/icons-material";
 
 const JobList = () => {
   const [items, setItems] = useState([]);
