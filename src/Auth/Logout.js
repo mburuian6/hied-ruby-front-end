@@ -11,12 +11,8 @@ const Logout = () => {
     navigate('/');
 
   }, []);
+  return null;
 
-  return (
-    <>
-    {navigate('/')}
-    </>
-  )
 }
 
 export default Logout;
