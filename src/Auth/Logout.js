@@ -1,6 +1,9 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { clearStorage } from "../helpers";
+import {useEffect} from "react";
+import {useNavigate} from "react-router-dom";
+import {clearStorage, persistedState} from "../helpers";
+import {clientId, clientSecret, defaultInstance as axios} from "../axiosConfig";
+import {API_LOGOUT_PATH} from "../paths-config";
+import toast from "../FlashNotification/FlashNotification";
 
 const Logout = () => {
   const navigate = useNavigate();
