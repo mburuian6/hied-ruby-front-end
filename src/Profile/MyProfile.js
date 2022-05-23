@@ -6,6 +6,7 @@ import toast from '../FlashNotification/FlashNotification';
 import {Button, Divider, Grid, Stack, TextField, Typography} from "@mui/material";
 import Statistics from "./Statistics";
 import {titleCase} from "../notice_helpers";
+import validator from "validator";
 
 const MyProfile = () => {
   const [createdAt, setCreatedAt] = useState();
@@ -38,6 +39,11 @@ const MyProfile = () => {
     event.preventDefault();
     // setLoading(true);
     var data = new FormData(event.target);
+
+    if(!validator.isEmail(data.get('email'))){
+      toast.warn('Invalid email');
+      return;
+    }
 
     var username = persistedState("username");
     data.append("username", username);
