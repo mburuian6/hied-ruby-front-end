@@ -65,6 +65,8 @@ authInstance.interceptors.response.use(response => {
 
 export { 
   defaultInstance,
-  authInstance
+  authInstance,
+  clientId,
+  clientSecret
 }
 
