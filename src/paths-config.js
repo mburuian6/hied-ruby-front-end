@@ -28,6 +28,7 @@ export {
     API_HOME_URL,
     API_SIGN_UP_PATH,
     API_LOGIN_PATH,
+    API_LOGOUT_PATH,
     headers,
     API_JOBS_PATH,
     API_BIDS_PATH,
