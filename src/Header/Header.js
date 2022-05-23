@@ -27,8 +27,7 @@ const Header = () => {
   };
 
   const handleLogout = () => {
-    clearStorage();
-    navigate('/');
+    navigate('/logout');
   }
 
   const handleGoToNotifications = () => {
