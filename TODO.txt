@@ -20,8 +20,9 @@
 - post location(virtual, physical->enter gmaps pin) & pictures 3
 - mark notification as read 4
 - Add contact phone?; Hide contact phone option? Send contact?
-00000000000000000000000000000000000000000000000000000000000000000000000
 - Search - chip(ui), like x(db)
+- job genres/ preference settings
+00000000000000000000000000000000000000000000000000000000000000000000000
 - Payment
 - Completed job
 - appshell
