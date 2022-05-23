@@ -6,7 +6,6 @@ import { defaultInstance as axios} from '../axiosConfig';
 import toast from '../FlashNotification/FlashNotification';
 
 const JobList = () => {
-  var networkDataReceived = false;
   const [items, setItems] = useState([]);
   var response_items;
 
