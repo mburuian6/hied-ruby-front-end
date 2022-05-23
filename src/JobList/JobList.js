@@ -6,13 +6,13 @@ import { defaultInstance as axios} from '../axiosConfig';
 import toast from '../FlashNotification/FlashNotification';
 
 const JobList = () => {
-  const[items, setItems] = useState([]);
   var networkDataReceived = false;
+  const [items, setItems] = useState([]);
   var response_items;
 
-  useEffect(()=>{
+  useEffect(() => {
     getJobs();
-  },[]);
+  }, []);
 
   const getJobs = () => {
     axios.get(API_JOBS_PATH).then((response) => {
@@ -27,21 +27,20 @@ const JobList = () => {
   const retryJobs = () => {
     axios.get(API_JOBS_PATH)
       .then((response) => {
-          response_items = response.data;
-          setItems(response_items["_embedded"]["posts"]?.reverse());
-        })
+        response_items = response.data;
+        setItems(response_items["_embedded"]["posts"]?.reverse());
+      })
       .catch((error) => {
-          console.log(error);
-          if(error.toString().search('ERR_CONNECTION_REFUSED')){
-            toast.error("Error! Check your internet connection and retry.")
-          }
-          else{
-            toast.error("Error! Contact Admin.")
-          }
-        })
+        console.log(error);
+        if (error.toString().search('ERR_CONNECTION_REFUSED')) {
+          toast.error("Error! Check your internet connection and retry.")
+        } else {
+          toast.error("Error! Contact Admin.")
+        }
+      })
   }
 
- 
+
   return (
     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
       <Grid item xs={3}>
