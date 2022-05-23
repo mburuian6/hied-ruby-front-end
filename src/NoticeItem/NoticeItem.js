@@ -10,9 +10,15 @@ const NoticeItem = React.memo(({ notification }) => {
   const dateUpdated = new Date(notification.updated_at);
   let message = getShortMessage(notification);
 
+  const statusColors = {
+    unopened: '#cbcbcb',
+    opened: '#FFFFFF'
+  }
+
   return (
     <>
-      <ListItem alignItems="flex-start">
+      <ListItem alignItems="flex-start"
+                sx={{ backgroundColor: statusColors[notification.notification_opened ?? '#FFFFFF'] }}>
         <ListItemAvatar>
           <Avatar alt="User">
             {username.charAt(0).toUpperCase()}
