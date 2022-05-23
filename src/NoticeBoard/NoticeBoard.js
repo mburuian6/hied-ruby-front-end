@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
 import React, { useEffect, useState } from 'react';
-import { API_ALL_NOTIFICATIONS } from "../paths-config";
+import { API_ALL_NOTIFICATIONS_PATH } from "../paths-config";
 import { defaultInstance as axios} from '../axiosConfig';
 import toast from '../FlashNotification/FlashNotification';
 import 'react-chat-elements/dist/main.css';
@@ -21,7 +21,7 @@ const NoticeBoard = (  ) => {
   }, [added])
   
   const getNotifications = () => {
-    axios.get(API_ALL_NOTIFICATIONS,{
+    axios.get(API_ALL_NOTIFICATIONS_PATH,{
       params: {
         username: username.toString()
       }
