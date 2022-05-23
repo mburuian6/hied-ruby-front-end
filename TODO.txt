@@ -22,6 +22,7 @@
 - Add contact phone?; Hide contact phone option? Send contact?
 - Search - chip(ui), like x(db)
 - job genres/ preference settings
+- refresh token
 00000000000000000000000000000000000000000000000000000000000000000000000
 - Payment
 - Completed job
