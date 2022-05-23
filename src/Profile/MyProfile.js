@@ -29,6 +29,7 @@ const MyProfile = () => {
       }
     }).catch((error)=>{
       console.log(error);
+      setEmail('Unavailable');
       toast.error('User profile unavailable.')
     })
   };
