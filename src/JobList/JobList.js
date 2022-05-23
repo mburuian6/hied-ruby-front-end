@@ -42,24 +42,31 @@ const JobList = () => {
 
 
   return (
-    <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-      <Grid item xs={3}>
-        <Button variant="contained" href="/jobform" >
-          New Post
-        </Button> 
-      </Grid>
-              
+    <Grid container spacing={{xs: 2, md: 3}} columns={{xs: 4, sm: 8, md: 12}}>
+
       {items.map((item, index) => (
-        <Grid item xs={2} sm={4} md={4} key={index} >
+        <Grid item xs={2} sm={4} md={4} key={index}>
           <JobItem
-          job={item}
-          jobIndex = {index}
-          jobLink = {item['_links']['self']}
+            job={item}
+            jobIndex={index}
+            jobLink={item['_links']['self']}
           />
         </Grid>
-          ))}
+      ))}
 
-      </Grid>
+      <Fab aria-label="add"
+           size={'small'}
+           href={`/jobform`}
+           sx={{
+             position: 'absolute',
+             bottom: (theme) => theme.spacing(2),
+             right: (theme) => theme.spacing(2),
+           }}
+      >
+        <Add />
+      </Fab>
+
+    </Grid>
   )
 }
 
