@@ -11,7 +11,6 @@
   - email => server side constraints
   -SERVER SIDE CONSTRAINTS
 - capture 401 responses and go to login
-- logout revoke token
 - cancancan
     - delete fns for post & bid
     - owners should not bid for their own bids
