@@ -21,21 +21,22 @@ const JobList = () => {
     })
     .catch((error) => {
         //network failed for some reason, get cached content
-        caches.match(API_JOBS_PATH)
-        .then (response => {
-          if(!response){
-            retryJobs();
-            return;
-          }
-          return response.json()
+        // caches.match(API_JOBS_PATH)
+        // .then (response => {
+        //   if(!response){
+        //     retryJobs();
+        //     return;
+        //   }
+        //   return response.json()
+      toast.warning('Your device is offline')
         })
-        .then(response_json => {
-          if(response_json){
-            setItems(response_json._embedded.posts?.reverse());
-            toast.warning('Your device is offline')
-          }
-        })
-      })
+        // .then(response_json => {
+        //   if(response_json){
+        //     setItems(response_json._embedded.posts?.reverse());
+        //     toast.warning('Your device is offline')
+        //   }
+        // })
+      // })
     }
 
   const retryJobs = () => {
