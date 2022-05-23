@@ -13,12 +13,12 @@ if (persistedState('access_token')) {
 }
 
 defaultInstance.interceptors.request.use(request => {
-  console.log('Starting Request', JSON.stringify(request, null, 2));
+  // console.log('Starting Request', JSON.stringify(request, null, 2));
   return request;
 })
 
 defaultInstance.interceptors.response.use(response => {
-  console.log('Response:', JSON.stringify(response, null, 2));
+  // console.log('Response:', JSON.stringify(response, null, 2));
   return response
 })
 
@@ -44,12 +44,12 @@ authInstance.interceptors.request.use(request => {
     request.data['client_secret'] = clientSecret;
   }
   
-  console.log('Starting Request', JSON.stringify(request, null, 2))
+  // console.log('Starting Request', JSON.stringify(request, null, 2))
   return request;
 });
 
 authInstance.interceptors.response.use(response => {
-  console.log('Response:', JSON.stringify(response, null, 2))
+  // console.log('Response:', JSON.stringify(response, null, 2))
   if(response.data.access_token != null ) {
     persistState('username', response.data.username);
     persistState('access_token', response.data.access_token);
@@ -59,9 +59,6 @@ authInstance.interceptors.response.use(response => {
   }
   return response;
 })
-
-
-
 
 export { 
   defaultInstance,
