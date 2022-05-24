@@ -5,15 +5,10 @@
 - add to homescreen
 ---------------
 - if user has bidded, attach to the top of bids
-- form input constraints, 5
-  - bidform,
-  - jobform
-  - email => server side constraints
-  -SERVER SIDE CONSTRAINTS
 - capture 401 responses and go to login
 - cancancan
     - delete fns for post & bid
-- reset password
+- reset password, in & out
 - jobview issue
 - post location(virtual, physical->enter gmaps pin) & pictures 3
 - Add contact phone?; Hide contact phone option? Send contact?
@@ -22,6 +17,7 @@
 - refresh token
 00000000000000000000000000000000000000000000000000000000000000000000000
 - Completed job/subtasks
+- expiring jobs
 - Payment
 - appshell
   (SSR both shell +
