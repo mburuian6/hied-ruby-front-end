@@ -13,18 +13,16 @@
 - capture 401 responses and go to login
 - cancancan
     - delete fns for post & bid
-    - owners should not bid for their own bids
 - reset password
 - jobview issue
 - post location(virtual, physical->enter gmaps pin) & pictures 3
-- mark notification as read 4
 - Add contact phone?; Hide contact phone option? Send contact?
 - Search - chip(ui), like x(db)
 - job genres/ preference settings
 - refresh token
 00000000000000000000000000000000000000000000000000000000000000000000000
+- Completed job/subtasks
 - Payment
-- Completed job
 - appshell
   (SSR both shell +
   content for entry page) +
