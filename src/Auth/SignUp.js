@@ -35,6 +35,18 @@ export default function SignUp() {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
 
+        let username = data.get("username");
+        if (!username || username===""){
+            toast.error("username cannot be empty");
+            return;
+        }
+
+        let password = data.get("password");
+        if (!password || password===""){
+            toast.error("Password cannot be empty");
+            return;
+        }
+
         // email validation
         if(validator.isEmail(data.get('email'))){
             //send the data

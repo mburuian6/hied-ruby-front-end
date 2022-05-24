@@ -34,6 +34,12 @@ export default function Login() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
+    let password = data.get("password");
+    if (!password || password===""){
+      toast.error("Password cannot be empty");
+      return;
+    }
+
     // email validation
     if(validator.isEmail(data.get('email'))){
         formSubmit(data);
