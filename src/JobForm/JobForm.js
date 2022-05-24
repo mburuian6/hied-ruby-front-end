@@ -32,6 +32,12 @@ const JobForm = () => {
     data.append("username", username);
     data.set("start", start.toUTCString());
 
+    let title = data.get("title");
+    if (!title || title===""){
+      toast.error("Title cannot be empty");
+      return;
+    }
+
     let pay = data.get("pay");
     if (pay < 0) {
       toast.error("Pay must be equal to or greater than zero");
