@@ -24,6 +24,11 @@ const BidForm = ({ addBid, postHashId }) => {
 
       data.append('username', username);
       data.append('post_hash_id', postHashId);
+    let pay = data.get("pay");
+    if (pay < 0) {
+      toast.error("Pay must be equal to or greater than zero");
+      return;
+    }
 
       await axios.post(API_BIDS_PATH, Object.fromEntries(data.entries())
       )
