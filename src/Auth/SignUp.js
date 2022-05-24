@@ -49,8 +49,6 @@ export default function SignUp() {
 
         // email validation
         if(validator.isEmail(data.get('email'))){
-            //send the data
-            // console.log(JSON.stringify(Object.fromEntries(data.entries())));
             formSubmit(data);
         }
         else {
