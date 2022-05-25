@@ -32,6 +32,8 @@ const JobView = (props) => {
     });
 
     const marker = new mapboxgl.Marker().setLngLat([parseFloat(lng), parseFloat(lat)]).addTo(map.current);
+    const nav = new mapboxgl.NavigationControl();
+    map.current.addControl(nav, 'top-left');
   });
 
   const NoMoreInfo = () => {

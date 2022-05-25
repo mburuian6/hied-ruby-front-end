@@ -127,6 +127,8 @@ const JobForm = () => {
       center: [lng, lat],
       zoom: zoom
     });
+    const nav = new mapboxgl.NavigationControl();
+    map.current.addControl(nav, 'top-left');
     marker.current = new mapboxgl.Marker().setLngLat([parseFloat(lng), parseFloat(lat)]).addTo(map.current);
   });
 
