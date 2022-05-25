@@ -46,6 +46,8 @@ const JobForm = () => {
   const [lng, setLng] = useState(-70.9);
   const [lat, setLat] = useState(42.35);
   const [zoom, setZoom] = useState(9);
+  const marker = useRef(null);
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -125,6 +127,7 @@ const JobForm = () => {
       center: [lng, lat],
       zoom: zoom
     });
+    marker.current = new mapboxgl.Marker().setLngLat([parseFloat(lng), parseFloat(lat)]).addTo(map.current);
   });
 
   useEffect(() => {
@@ -133,6 +136,7 @@ const JobForm = () => {
       setLng(map.current.getCenter().lng.toFixed(4));
       setLat(map.current.getCenter().lat.toFixed(4));
       setZoom(map.current.getZoom().toFixed(2));
+      marker.current.setLngLat([parseFloat(lng), parseFloat(lat)]);
     });
   });
 

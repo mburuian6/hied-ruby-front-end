@@ -30,6 +30,8 @@ const JobView = (props) => {
       center: [lng, lat],
       zoom: zoom
     });
+
+    const marker = new mapboxgl.Marker().setLngLat([parseFloat(lng), parseFloat(lat)]).addTo(map.current);
   });
 
   const NoMoreInfo = () => {
