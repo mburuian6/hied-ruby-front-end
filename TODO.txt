@@ -9,13 +9,13 @@
     - delete fns for post & bid
 - reset password, in & out
 - jobview issue
-- post location(virtual, physical) & pictures 3 -> enter gmaps pin for physical;
+- post & pictures 3 -> enter gmaps pin for physical;
     - clear pins whenever virtual
 - Add contact phone?; Hide contact phone option? Send contact?
 - Search - chip(ui), like x(db)
 - job genres/ preference settings
 - refresh token - top-layer method; if token valid and not revoked, silent refresh
-- post-links
+- post-links - just change base_href in backend serializer
 - rating
 - error logs
 - encrypt requests & resources/ secure items on browser
