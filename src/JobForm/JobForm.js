@@ -124,9 +124,10 @@ const JobForm = () => {
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/streets-v11',
-      center: [lng, lat],
+      center: [parseFloat(lng), parseFloat(lat)],
       zoom: zoom
     });
+
     const nav = new mapboxgl.NavigationControl();
     map.current.addControl(nav, 'top-left');
     marker.current = new mapboxgl.Marker().setLngLat([parseFloat(lng), parseFloat(lat)]).addTo(map.current);
