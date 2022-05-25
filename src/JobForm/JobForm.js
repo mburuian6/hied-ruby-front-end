@@ -78,11 +78,6 @@ const JobForm = () => {
 
   const handlePayChange = (event) => {
     console.log(event.target.value);
-    // if(event.target.value < 0){
-    //   setError(false);
-    //   return;
-    // }
-    // setError(true);
     setPay(event.target.value);
   };
 
@@ -99,7 +94,6 @@ const JobForm = () => {
   };
 
   return (
-    // <LocalizationProvider dateAdapter={DateAdapter}>
     <form onSubmit={handleSubmit} id="job_entry_form" autoComplete="off">
       <Stack spacing={3}>{/*  <Grid container columnSpacing={2}>  */}
         <Grid item xs={12} sm={4}>
@@ -186,7 +180,6 @@ const JobForm = () => {
         </Grid>
       </Stack>{/* </Grid> */}
     </form>
-    // </LocalizationProvider>
   );
 };
 
