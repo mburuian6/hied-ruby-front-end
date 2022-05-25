@@ -94,6 +94,10 @@ const JobForm = () => {
     setDescription(event.target.value);
   };
 
+  const handleLocationChange = (event) => {
+    setLocation(event.target.value);
+  };
+
   return (
     // <LocalizationProvider dateAdapter={DateAdapter}>
     <form onSubmit={handleSubmit} id="job_entry_form" autoComplete="off">
