@@ -6,6 +6,7 @@ import BidList from '../BidList/BidList';
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Card from "@mui/material/Card";
+import mapboxgl from "mapbox-gl";
 
 
 const JobView = (props) => {
