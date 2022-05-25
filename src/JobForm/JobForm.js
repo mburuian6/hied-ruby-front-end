@@ -56,7 +56,12 @@ const JobForm = () => {
     // console.log("IMAGES: ",files);
     // data.append('images', files);
     data.set("start", start.toUTCString());
-    
+
+    var location = data.get('location')
+    if (location==='physical'){
+      data.append('latitude', lat.toString());
+      data.append('longitude', lng.toString());
+    }
 
     console.log(JSON.stringify(Object.fromEntries(data.entries())));
 
