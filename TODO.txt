@@ -19,6 +19,7 @@
 - rating
 - error logs
 - encrypt requests & resources/ secure items on browser
+- location pin - jobform,
 00000000000000000000000000000000000000000000000000000000000000000000000
 - Completed job/subtasks
 - expiring jobs
