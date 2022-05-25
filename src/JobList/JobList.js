@@ -62,8 +62,10 @@ const JobList = () => {
              bottom: (theme) => theme.spacing(2),
              right: (theme) => theme.spacing(2),
            }}
+           variant={"extended"}
+           color={"primary"}
       >
-        <Add />
+        New Job<Add />
       </Fab>
 
     </Grid>
