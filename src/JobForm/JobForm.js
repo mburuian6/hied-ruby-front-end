@@ -96,6 +96,16 @@ const JobForm = () => {
     setLocation(event.target.value);
   };
 
+  useEffect(() => {
+    if (map.current) return; // initialize map only once
+    map.current = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [lng, lat],
+      zoom: zoom
+    });
+  });
+
   return (
     <Stack spacing={2}>
     <form onSubmit={handleSubmit} id="job_entry_form" autoComplete="off">
