@@ -140,16 +140,28 @@ const JobForm = () => {
               renderInput={(params) => <TextField {...params} />}
             />
           </LocalizationProvider>
-          {/* <TextField
-            id="start"
-            label="Start"
+        </Grid>
+
+        <Grid item xs={12} sm={4}>
+          <TextField
+            id="location"
+            label="Location"
             variant="filled"
-            type="datetime-local"
-            value={start}
-            name="start"
-            onChange={handleStartChange}
+            type="text"
+            value={location}
+            placeholder="where is it?"
+            name="location"
+            onChange={handleLocationChange}
             required
-          /> */}
+            select
+            // helperText="Please select your currency"
+          >
+            {locations.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
         </Grid>
 
         <Grid item xs={12} sm={12}>
