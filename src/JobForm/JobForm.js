@@ -28,6 +28,7 @@ const JobForm = () => {
   const [pay, setPay] = useState(0);
   const [start, setStart] = useState(new Date());
   const [description, setDescription] = useState("");
+  const [location, setLocation] = useState("virtual");
   // const [error, setError] = useState(false); 
 
   const handleSubmit = (event) => {
