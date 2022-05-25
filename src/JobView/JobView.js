@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import { useParams, useLocation } from 'react-router';
 import {timeFormat, timeFormatHuman, timeFormatWithTimeZone} from '../helpers';
 import {Breadcrumbs, Button, Link, Stack, Typography} from '@mui/material';
@@ -14,11 +14,39 @@ const JobView = (props) => {
   const location = useLocation();
   const [job, setJob] = useState(location.state.job);
 
+  const [lng, setLng] = useState(job.coordinate.longitude);
+  const [lat, setLat] = useState(job.coordinate.latitude);
+  const [zoom, setZoom] = useState(9);
+  const mapContainer = useRef(null);
+  const map = useRef(null);
+
+  useEffect(() => {
+    if (job.location !== 'physical') return;
+    if (map.current) return; // initialize map only once
+    map.current = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [lng, lat],
+      zoom: zoom
+    });
+  });
+
   const NoMoreInfo = () => {
     return (
       <Typography variant={"caption"} color={"text.secondary"} >
         No more info right now.
       </Typography>
+    )
+  }
+
+  const Map = () => {
+    return (
+      <div>
+        <div ref={mapContainer} className="map-container" />
+        <div className="sidebar">
+          Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+        </div>
+      </div>
     )
   }
 
@@ -46,6 +74,8 @@ const JobView = (props) => {
           </Typography>
         </CardContent>
       </Card>
+
+        {job.location === 'physical'? < Map /> : null}
 
       <Typography variant="h6"> Do you want to bid? </Typography>
       
