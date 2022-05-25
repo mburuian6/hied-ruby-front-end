@@ -1,7 +1,6 @@
 - serviceworker & Cache static assets (workbox) 1
 - Fail gracefully if serviceworker cache empty(navigator.online()) 2
 - Push notifications
-- encrypt requests & resources
 - add to homescreen
 ---------------
 - if user has bidded, attach to the top of bids
@@ -10,11 +9,16 @@
     - delete fns for post & bid
 - reset password, in & out
 - jobview issue
-- post location(virtual, physical->enter gmaps pin) & pictures 3
+- post location(virtual, physical) & pictures 3 -> enter gmaps pin for physical;
+    - clear pins whenever virtual
 - Add contact phone?; Hide contact phone option? Send contact?
 - Search - chip(ui), like x(db)
 - job genres/ preference settings
-- refresh token
+- refresh token - top-layer method; if token valid and not revoked, silent refresh
+- post-links
+- rating
+- error logs
+- encrypt requests & resources/ secure items on browser
 00000000000000000000000000000000000000000000000000000000000000000000000
 - Completed job/subtasks
 - expiring jobs
