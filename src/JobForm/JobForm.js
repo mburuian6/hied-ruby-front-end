@@ -39,10 +39,6 @@ const JobForm = () => {
   const formSubmit = async (formData) => {
     var data = new FormData(formData);
 
-    var username = persistedState("username");
-    data.append("username", username);
-    data.set("start", start.toUTCString());
-
     let title = data.get("title");
     if (!title || title===""){
       toast.error("Title cannot be empty");
@@ -54,6 +50,13 @@ const JobForm = () => {
       toast.error("Pay must be equal to or greater than zero");
       return;
     }
+
+    var username = persistedState("username");
+    data.append("username", username);
+    // console.log("IMAGES: ",files);
+    // data.append('images', files);
+    data.set("start", start.toUTCString());
+    
 
     console.log(JSON.stringify(Object.fromEntries(data.entries())));
 
