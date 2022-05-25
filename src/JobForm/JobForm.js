@@ -1,5 +1,13 @@
-import React, { useState } from "react";
-import { Divider, Grid, Stack, TextField } from "@mui/material";
+import React, {useEffect, useRef, useState} from "react";
+import {
+  Divider,
+  Grid,
+  ImageList,
+  ImageListItem,
+  MenuItem,
+  Stack,
+  TextField
+} from "@mui/material";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { API_JOBS_PATH } from "../paths-config";
@@ -9,7 +17,9 @@ import toast from "../FlashNotification/FlashNotification";
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import DateTimePicker from '@mui/lab/DateTimePicker';
-import {isToday} from "date-fns";
+import {AddPhotoAlternate} from "@mui/icons-material";
+import mapboxgl from '!mapbox-gl';// eslint-disable-line
+
 const locations = [
   {
     value: 'virtual',
