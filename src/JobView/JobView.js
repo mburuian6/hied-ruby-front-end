@@ -8,6 +8,8 @@ import CardActions from "@mui/material/CardActions";
 import Card from "@mui/material/Card";
 import mapboxgl from "mapbox-gl";
 
+mapboxgl.accessToken = '';
+
 
 const JobView = (props) => {
 

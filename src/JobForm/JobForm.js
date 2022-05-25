@@ -20,6 +20,8 @@ import DateTimePicker from '@mui/lab/DateTimePicker';
 import {AddPhotoAlternate} from "@mui/icons-material";
 import mapboxgl from '!mapbox-gl';// eslint-disable-line
 
+mapboxgl.accessToken = '';
+
 const locations = [
   {
     value: 'virtual',
