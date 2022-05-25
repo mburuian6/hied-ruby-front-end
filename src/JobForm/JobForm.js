@@ -10,6 +10,16 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import DateTimePicker from '@mui/lab/DateTimePicker';
 import {isToday} from "date-fns";
+const locations = [
+  {
+    value: 'virtual',
+    label: 'Virtual',
+  },
+  {
+    value: 'physical',
+    label: 'Physical',
+  }
+];
 
 const JobForm = () => {
   const navigate = useNavigate();
