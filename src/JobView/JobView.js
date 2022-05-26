@@ -17,8 +17,16 @@ const JobView = (props) => {
   const location = useLocation();
   const [job, setJob] = useState(location.state.job);
 
-  const [lng, setLng] = useState(job.coordinate.longitude);
-  const [lat, setLat] = useState(job.coordinate.latitude);
+  const _init_lng = () => {
+    return job.location === 'physical'? job.coordinate.longitude : null
+  }
+
+  const _init_lat = () => {
+    return job.location === 'physical'? job.coordinate.latitude : null
+  }
+
+  const [lng, setLng] = useState(_init_lng());
+  const [lat, setLat] = useState(_init_lat());
   const [zoom, setZoom] = useState(12);
   const mapContainer = useRef(null);
   const map = useRef(null);
