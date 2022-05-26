@@ -53,7 +53,7 @@ const NoticeBoard = (  ) => {
            size={'small'}
            href={`/notice-board/${username}`}
            sx={{
-             position: 'absolute',
+             position: 'fixed',
              bottom: (theme) => theme.spacing(2),
              right: (theme) => theme.spacing(2),
            }}
