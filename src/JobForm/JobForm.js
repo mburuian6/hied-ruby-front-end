@@ -273,4 +273,9 @@ const JobForm = () => {
   );
 };
 
+const tags = [
+  {text: 'virtual'},
+  {text: 'physical'}
+]
+
 export default JobForm;
