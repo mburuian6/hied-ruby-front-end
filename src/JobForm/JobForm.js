@@ -6,7 +6,8 @@ import {
   ImageListItem,
   MenuItem,
   Stack,
-  TextField
+  TextField,
+  Autocomplete
 } from "@mui/material";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -42,6 +43,7 @@ const JobForm = () => {
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("virtual");
   // const [error, setError] = useState(false); 
+  const [postTags, setPostTags] = useState([]);
 
   const mapContainer = useRef(null);
   const map = useRef(null);
@@ -76,6 +78,8 @@ const JobForm = () => {
     // console.log("IMAGES: ",files);
     // data.append('images', files);
     data.set("start", start.toUTCString());
+    var _tags = postTags[1].map(v => v.text)
+    data.append('tags', _tags);
 
     var location = data.get('location')
     if (location==='physical'){
@@ -119,6 +123,11 @@ const JobForm = () => {
 
   const handleLocationChange = (event) => {
     setLocation(event.target.value);
+  };
+
+  const handleTagsChange = (event, value) => {
+    postTags.push(value);
+    console.log(postTags)
   };
 
   useEffect(() => {
@@ -209,6 +218,27 @@ const JobForm = () => {
               </MenuItem>
             ))}
           </TextField>
+        </Grid>
+
+        <Grid item xs={12} sm={4} sx={{ maxWidth: 500 }}>
+          <Autocomplete
+            multiple
+            id="tags-standard"
+            name='tags'
+            options={tags}
+            onChange={handleTagsChange}
+            filterSelectedOptions
+            getOptionLabel={(option) => option.text}
+            // defaultValue={[tags[0]]}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                variant="standard"
+                label="Tags"
+                placeholder="Optional Tags..."
+              />
+            )}
+          />
         </Grid>
 
         <Grid item xs={12} sm={12}>
