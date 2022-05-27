@@ -9,8 +9,7 @@
     - delete fns for post & bid
 - reset password, in & out
 - jobview issue
-- post & pictures 3 -> enter gmaps pin for physical;
-    - clear pins whenever virtual
+- post pictures 3 -> post => dialog prompt; yes- post, no don't
 - Add contact phone?; Hide contact phone option? Send contact?
 - Search - chip(ui), like x(db)
 - job genres/ preference settings
@@ -19,7 +18,6 @@
 - rating
 - error logs
 - encrypt requests & resources/ secure items on browser
-- location pin - jobform,
 00000000000000000000000000000000000000000000000000000000000000000000000
 - Completed job/subtasks
 - expiring jobs
