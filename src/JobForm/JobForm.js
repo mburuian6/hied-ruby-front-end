@@ -19,7 +19,9 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import DateTimePicker from '@mui/lab/DateTimePicker';
 import {AddPhotoAlternate} from "@mui/icons-material";
-import mapboxgl from '!mapbox-gl';// eslint-disable-line
+// eslint-disable-next-line import/no-webpack-loader-syntax
+import mapboxgl from '!mapbox-gl';
+// eslint-disable-line
 
 mapboxgl.accessToken = '';
 
@@ -121,6 +123,8 @@ const JobForm = () => {
     setDescription(event.target.value);
   };
 
+  const handleImageChange = (event) => {
+    if(files.length >= 3)files.pop();
   const handleLocationChange = (event) => {
     setLocation(event.target.value);
   };
