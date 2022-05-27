@@ -88,9 +88,9 @@ const JobView = (props) => {
             {job.description? job.description : <NoMoreInfo/>}
           </Typography>
           <div>
-            {job.tags.split(',').map((tag, index) => (
+            {job.tags? job.tags.split(',').map((tag, index) => (
               <Chip label={tag} color={"primary"} sx={{margin:0.5}}/>
-            ))}
+            )) : null}
           </div>
         </CardContent>
       </Card>
