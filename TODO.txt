@@ -12,7 +12,7 @@
 - post pictures 3 -> post => dialog prompt; yes- post, no don't
 - Add contact phone?; Hide contact phone option? Send contact?
 - Search - chip(ui), like x(db)
-- job genres/ preference settings
+- preference settings
 - refresh token - top-layer method; if token valid and not revoked, silent refresh
 - post-links - just change base_href in backend serializer
 - rating
