@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import { useParams, useLocation } from 'react-router';
 import {timeFormat, timeFormatHuman, timeFormatWithTimeZone} from '../helpers';
-import {Breadcrumbs, Button, Link, Stack, Typography} from '@mui/material';
+import {Breadcrumbs, Button, Chip, Link, Stack, Typography} from '@mui/material';
 import BidList from '../BidList/BidList';
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
@@ -87,6 +87,11 @@ const JobView = (props) => {
           <Typography variant="body2">
             {job.description? job.description : <NoMoreInfo/>}
           </Typography>
+          <div>
+            {job.tags.split(',').map((tag, index) => (
+              <Chip label={tag} color={"primary"} sx={{margin:0.5}}/>
+            ))}
+          </div>
         </CardContent>
       </Card>
 
