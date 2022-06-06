@@ -70,6 +70,23 @@ const JobView = (props) => {
     )
   }
 
+  const Description = () => {
+    return (
+      <ThemeProvider theme={myTheme}>
+        <MUIRichTextEditor
+          label="Type something here..."
+          inlineToolbar={true}
+          controls={['bold', 'italic',"underline", "strikethrough", "highlight", "undo", "redo",
+            "link", "numberList", "bulletList", "quote", "code"]}
+          defaultValue={job.description}
+          readOnly={true}
+          inlineToolbar={false}
+          toolbar={false}
+        />
+      </ThemeProvider>
+    )
+  }
+
   const Map = () => {
     return (
       <div>
@@ -101,7 +118,7 @@ const JobView = (props) => {
             Start: {timeFormat(job.start)}
           </Typography>
           <Typography variant="body2">
-            {job.description? job.description : <NoMoreInfo/>}
+            {job.description? <Description /> : <NoMoreInfo/>}
           </Typography>
           <div>
             {job.tags? job.tags.split(',').map((tag, index) => (
