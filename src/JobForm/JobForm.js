@@ -98,6 +98,7 @@ const JobForm = () => {
     data.set("start", start.toUTCString());
     var _tags = postTags.map(v => v.text)
     data.append('tags', _tags);
+    data.append('description', description);
 
     var location = data.get('location')
     if (location==='physical'){
