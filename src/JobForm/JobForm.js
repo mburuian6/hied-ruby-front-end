@@ -260,7 +260,36 @@ const JobForm = () => {
           />
         </Grid>
 
-        <Grid item xs={12} sm={12}>
+        {/*<Grid item xs={12} sm={12} >*/}
+        {/*  <TextField*/}
+        {/*    id="description"*/}
+        {/*    label="Description"*/}
+        {/*    variant="filled"*/}
+        {/*    type="text"*/}
+        {/*    placeholder="..."*/}
+        {/*    multiline*/}
+        {/*    style={{ backgroundColor: " white", color: " white" }}*/}
+        {/*    value={description}*/}
+        {/*    name="description"*/}
+        {/*    rows={4}*/}
+        {/*    onChange={handleDescriptionChange}*/}
+        {/*    sx={{ minWidth: 500 }}*/}
+        {/*  />*/}
+        {/*</Grid>*/}
+
+        <Grid item xs={12} sm={12} sx={{height:200}}>
+          <ThemeProvider theme={myTheme}>
+            <MUIRichTextEditor
+              label="Type something here..."
+              inlineToolbar={true}
+              controls={['bold', 'italic',"underline", "strikethrough", "highlight", "undo", "redo",
+                "link", "numberList", "bulletList", "quote", "code"]}
+              onChange={handleDescriptionChange}
+            />
+          </ThemeProvider>
+        </Grid>
+        <Divider/>
+
           <TextField
             id="description"
             label="Description"
