@@ -217,28 +217,6 @@ const JobForm = () => {
           </LocalizationProvider>
         </Grid>
 
-        <Grid item xs={12} sm={4}>
-          <TextField
-            id="location"
-            label="Location"
-            variant="filled"
-            type="text"
-            value={location}
-            placeholder="where is it?"
-            name="location"
-            onChange={handleLocationChange}
-            required
-            select
-            // helperText="Please select your currency"
-          >
-            {locations.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField>
-        </Grid>
-
         <Grid item xs={12} sm={4} sx={{ maxWidth: 500 }}>
           <Autocomplete
             multiple
@@ -291,18 +269,31 @@ const JobForm = () => {
         <Divider/>
 
           <TextField
-            id="description"
-            label="Description"
+            id="location"
+            label="Location"
             variant="filled"
             type="text"
-            placeholder="..."
-            multiline
-            style={{ backgroundColor: " white", color: " white" }}
-            value={description}
-            name="description"
-            onChange={handleDescriptionChange}
-          />
+            value={location}
+            placeholder="where is it?"
+            name="location"
+            onChange={handleLocationChange}
+            required
+            select
+            // helperText="Please select your currency"
+          >
+            {locations.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
         </Grid>
+
+        <Stack sx={{display: showmap, minWidth: 100+'%'}} >
+          <div ref={mapContainer} className="map-container" style={{minWidth:90+'%'}}/>
+          <div className="sidebar"> Longitude: {lng} | Latitude: {lat} | Zoom: {zoom} </div>
+        </Stack>
+
         <Grid item xs={12} sm={12}>
           <Button variant="contained" color="primary" type="submit">
             {" "}
