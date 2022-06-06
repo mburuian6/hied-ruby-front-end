@@ -96,7 +96,7 @@ const JobForm = () => {
     // console.log("IMAGES: ",files);
     // data.append('images', files);
     data.set("start", start.toUTCString());
-    var _tags = postTags[1].map(v => v.text)
+    var _tags = postTags.map(v => v.text)
     data.append('tags', _tags);
 
     var location = data.get('location')
