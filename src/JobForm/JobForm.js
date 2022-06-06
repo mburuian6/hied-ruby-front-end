@@ -321,11 +321,6 @@ const JobForm = () => {
         </Grid>
       </Stack>{/* </Grid> */}
     </form>
-      <div>
-        <div><p>Please center the location</p></div>
-        <div ref={mapContainer} className="map-container" />
-        <div className="sidebar"> Longitude: {lng} | Latitude: {lat} | Zoom: {zoom} </div>
-      </div>
 
     </Stack>
   );
