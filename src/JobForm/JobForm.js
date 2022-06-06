@@ -44,8 +44,9 @@ const JobForm = () => {
   const [start, setStart] = useState(new Date());
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("virtual");
-  // const [error, setError] = useState(false); 
+  const [showmap,setShowmap] = useState('none');
   const [postTags, setPostTags] = useState([]);
+  // const [error, setError] = useState(false);
 
   const mapContainer = useRef(null);
   const map = useRef(null);
