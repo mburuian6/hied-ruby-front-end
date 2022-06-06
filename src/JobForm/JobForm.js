@@ -134,14 +134,29 @@ const JobForm = () => {
     setStart(event);
   };
 
-  const handleDescriptionChange = (event) => {
-    setDescription(event.target.value);
+  const handleDescriptionChange = (state: EditorState) => {
+    // Get current selection
+    // console.log(state.getSelection())
+    // Get current content
+    console.log(JSON.stringify(convertToRaw(state.getCurrentContent())))
+    setDescription(JSON.stringify(convertToRaw(state.getCurrentContent())))
+    // Get current text
+    // console.log(state.getCurrentContent().getPlainText())
+    // Check if editor is empty
+    // if (!state.getCurrentContent().hasText()) {
+    //   console.log("empty")
+    // }
   };
 
   const handleImageChange = (event) => {
     if(files.length >= 3)files.pop();
   const handleLocationChange = (event) => {
     setLocation(event.target.value);
+    if (event.target.value === 'physical') {
+      setShowmap('block');
+    } else {
+      setShowmap('none')
+    }
   };
 
   const handleTagsChange = (event, value) => {
