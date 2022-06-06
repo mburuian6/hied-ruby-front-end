@@ -7,6 +7,8 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Card from "@mui/material/Card";
 import mapboxgl from "mapbox-gl";
+import MUIRichTextEditor from "mui-rte";
+import {createTheme, ThemeProvider} from "@mui/material/styles";
 
 mapboxgl.accessToken = '';
 
