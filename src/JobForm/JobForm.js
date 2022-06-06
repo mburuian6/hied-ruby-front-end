@@ -54,6 +54,21 @@ const JobForm = () => {
   const [zoom, setZoom] = useState(9);
   const marker = useRef(null);
 
+  const myTheme = createTheme({ });
+
+  Object.assign(myTheme, {
+    overrides: {
+      MUIRichTextEditor: {
+        root: {
+          marginTop: 20,
+          width: "80%",
+        },
+        editor: {
+          // borderBottom: "1px solid gray"
+        }
+      }
+    }
+  })
 
   const handleSubmit = (event) => {
     event.preventDefault();

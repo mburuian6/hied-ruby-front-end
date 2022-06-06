@@ -31,6 +31,22 @@ const JobView = (props) => {
   const mapContainer = useRef(null);
   const map = useRef(null);
 
+  const myTheme = createTheme({ });
+
+  Object.assign(myTheme, {
+    overrides: {
+      MUIRichTextEditor: {
+        root: {
+          marginTop: 20,
+          width: "80%",
+        },
+        editor: {
+          // borderBottom: "1px solid gray"
+        }
+      }
+    }
+  })
+
   useEffect(() => {
     if (job.location !== 'physical') return;
     if (map.current) return; // initialize map only once
