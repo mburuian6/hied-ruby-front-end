@@ -29,9 +29,6 @@ export default function JobItem({ job }) {
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
           Start: {timeFormat(job.start)}
         </Typography>
-        <Typography variant="body2">
-          {job.description? job.description.substring(0, 31) : <NoMoreInfo/>}
-        </Typography>
       </CardContent>
       <CardActions>
         <Button size="small" href={`/profile/${job.username}`}>{job.username}</Button>
