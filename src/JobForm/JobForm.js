@@ -145,8 +145,10 @@ const JobForm = () => {
   };
 
   const handleTagsChange = (event, value) => {
-    postTags.push(value);
-    console.log(postTags)
+    console.log(value)
+    setPostTags(value)
+    // postTags.push(value);
+    // console.log(postTags)
   };
 
   useEffect(() => {
