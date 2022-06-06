@@ -21,7 +21,9 @@ import DateTimePicker from '@mui/lab/DateTimePicker';
 import {AddPhotoAlternate} from "@mui/icons-material";
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import mapboxgl from '!mapbox-gl';
-// eslint-disable-line
+import MUIRichTextEditor from "mui-rte";
+import {createTheme, ThemeProvider} from "@mui/material/styles";
+import { EditorState, convertToRaw } from 'draft-js';
 
 mapboxgl.accessToken = '';
 
