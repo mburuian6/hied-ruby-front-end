@@ -3,6 +3,8 @@ import {defaultInstance as axios} from "../axiosConfig";
 import SearchBar from "./SearchBar";
 import {Grid} from "@mui/material";
 import JobItem from "../JobItem/JobItem";
+import {API_GET_USER_PATH, API_SEARCH_POSTS_PATH} from "../paths-config";
+import toast from "../FlashNotification/FlashNotification";
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -18,7 +20,19 @@ const Search = () => {
   }, [searchTerm]);
 
   const fetchPosts = async (searchTerm="") => {
-    // TODO: send request to back-end here
+    axios.get(API_SEARCH_POSTS_PATH, {
+      params: {
+        search_term : searchTerm
+      }
+    })
+    .then((response) => {
+      var response_items = response.data;
+      setState(response_items["_embedded"]["posts"]?.reverse());
+    })
+    .catch((error) => {
+      toast.warning('Your device is offline')
+      console.log(error)
+    })
   };
 
 
