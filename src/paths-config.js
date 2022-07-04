@@ -10,6 +10,7 @@ const API_LOGOUT_PATH = '/oauth/revoke';
 
 //Content
 const API_JOBS_PATH = '/posts';
+const API_SEARCH_POSTS_PATH = '/posts/search';
 const API_POST_BIDS_PATH = '/bids/open_post_bids';
 const API_BIDS_PATH = '/bids';
 const API_ACCEPT_BID_PATH = '/bids/accept_bid';
@@ -32,6 +33,7 @@ export {
     API_LOGOUT_PATH,
     headers,
     API_JOBS_PATH,
+    API_SEARCH_POSTS_PATH,
     API_BIDS_PATH,
     API_POST_BIDS_PATH,
     API_ACCEPT_BID_PATH,
