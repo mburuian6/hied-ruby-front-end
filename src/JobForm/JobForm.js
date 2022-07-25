@@ -48,6 +48,7 @@ const JobForm = () => {
   const [location, setLocation] = useState("virtual");
   const [showmap,setShowmap] = useState('none');
   const [postTags, setPostTags] = useState([]);
+  const [files, setFiles] = useState([]);
   // const [error, setError] = useState(false);
 
   const mapContainer = useRef(null);
@@ -96,7 +97,7 @@ const JobForm = () => {
     var username = persistedState("username");
     data.append("username", username);
     // console.log("IMAGES: ",files);
-    // data.append('images', files);
+    // data.append('images', new Blob([new Uint8Array(files[0])], {type: files[0].type }));
     data.set("start", start.toUTCString());
     var _tags = postTags.map(v => v.text)
     data.append('tags', _tags);
@@ -108,7 +109,10 @@ const JobForm = () => {
       data.append('longitude', lng.toString());
     }
 
-    console.log(JSON.stringify(Object.fromEntries(data.entries())));
+    data.append('images', new Blob([JSON.stringify(files[0])]), 'data.json')
+
+    console.log((Object.fromEntries(data)));
+    console.log(JSON.stringify(Object.fromEntries(data)));
 
     await axios
       .post(API_JOBS_PATH, Object.fromEntries(data.entries()))
@@ -154,6 +158,10 @@ const JobForm = () => {
 
   const handleImageChange = (event) => {
     if(files.length >= 3)files.pop();
+    files.push(event.target.files[0]);
+    console.log(event.target.files[0] , "added = ", files)
+  };
+
   const handleLocationChange = (event) => {
     setLocation(event.target.value);
     if (event.target.value === 'physical') {
@@ -289,6 +297,24 @@ const JobForm = () => {
         </Grid>
         <Divider/>
 
+        {/*<Grid item xs={12} sm={12}>*/}
+        {/*  <input*/}
+        {/*    accept="image/*"*/}
+        {/*    style={{ display: 'none' }}*/}
+        {/*    id="raised-button-file"*/}
+        {/*    multiple*/}
+        {/*    type="file"*/}
+        {/*    // enctype="multipart/form-data"*/}
+        {/*    onChange={handleImageChange}*/}
+        {/*  />*/}
+        {/*  <label htmlFor="raised-button-file">*/}
+        {/*    <Button variant="contained" component="span">*/}
+        {/*      <AddPhotoAlternate />*/}
+        {/*    </Button>*/}
+        {/*  </label>*/}
+        {/*</Grid>*/}
+
+        <Grid item xs={12} sm={4}>
           <TextField
             id="location"
             label="Location"
@@ -323,6 +349,18 @@ const JobForm = () => {
         </Grid>
       </Stack>{/* </Grid> */}
     </form>
+
+  {/*<ImageList cols={3} rowHeight={164}>*/}
+  {/*  {files.map((item, index) => (*/}
+  {/*    <ImageListItem key={index}>*/}
+  {/*      <img*/}
+  {/*        src={`${item}?w=164&h=164&fit=crop&auto=format`}*/}
+  {/*        alt={item.name}*/}
+  {/*        loading="lazy"*/}
+  {/*      />*/}
+  {/*    </ImageListItem>*/}
+  {/*  ))}*/}
+  {/*</ImageList>*/}
 
     </Stack>
   );
